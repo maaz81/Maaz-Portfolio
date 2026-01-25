@@ -8,18 +8,20 @@ import Experience from './components/Experience';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import AllProjectsPage from './pages/AllProjects';
+const AllProjectsPage = React.lazy(() => import('./pages/AllProjects'));
 
 export default function App() {
   return (
     <Router>
-      <Routes>
-        {/* Home Page */}
-        <Route path="/" element={<HomePage />} />
+      <React.Suspense fallback={<div className='min-h-screen flex items-center justify-center bg-slate-900 text-white'>Loading...</div>}>
+        <Routes>
+          {/* Home Page */}
+          <Route path="/" element={<HomePage />} />
 
-        {/* All Projects Page */}
-        <Route path="/projects" element={<AllProjectsPage />} />
-      </Routes>
+          {/* All Projects Page */}
+          <Route path="/projects" element={<AllProjectsPage />} />
+        </Routes>
+      </React.Suspense>
     </Router>
   );
 }
