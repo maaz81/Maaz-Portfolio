@@ -77,7 +77,7 @@ export default function About() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Briefcase className="text-purple-400" size={20} />
-                  <span className="text-gray-300">1+ Year Experience</span>
+                  <span className="text-gray-300">3+ Month Experience</span>
                 </div>
               </div>
 

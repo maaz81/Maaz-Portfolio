@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
 import { Github, ExternalLink, ArrowLeft, Filter } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import ProjectModal from './ProjectModal';
 
 export default function AllProjectsPage() {
   const [activeFilter, setActiveFilter] = useState('All');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(null);
+
 
   const projects = [
     {
@@ -26,7 +29,7 @@ export default function AllProjectsPage() {
       category: 'Full Stack',
       github: 'https://github.com/maaz81/AI-Thought-Sharing-Webapp',
       demo: '#',
-      image: '/projects/ai-thought-sharing.png',
+      image: '/projects/Ai-thought.png',
       year: '2025'
     },
     {
@@ -44,30 +47,11 @@ export default function AllProjectsPage() {
       category: 'Frontend',
       github: 'https://github.com/maaz81/Ochi-Clone-Project',
       demo: '#',
-      image: '/projects/ochi-clone.png',
-      year: '2024'
-    },
-    // Add more projects here
-    {
-      title: 'E-Commerce Platform',
-      description: 'A full-featured e-commerce platform with user authentication, product management, shopping cart, and payment integration.',
-      longDescription: 'Built a comprehensive e-commerce platform from scratch with complete user authentication, product catalog management, shopping cart functionality, and secure payment gateway integration. Implemented admin dashboard for inventory management and order tracking.',
-      features: [
-        'User authentication & authorization',
-        'Product catalog with filters',
-        'Shopping cart functionality',
-        'Payment gateway integration',
-        'Admin dashboard'
-      ],
-      tech: ['React.js', 'Node.js', 'MongoDB', 'Stripe', 'Redux'],
-      category: 'Full Stack',
-      github: '#',
-      demo: '#',
-      image: '/projects/placeholder.png',
-      year: '2024'
+      image: '/projects/ochi-design.png',
+      year: '2025'
     },
     {
-      title: 'Task Management App',
+      title: 'RememberMe - Task Manager',
       description: 'A collaborative task management application with real-time updates, team collaboration features, and project tracking.',
       longDescription: 'Developed a modern task management application that enables teams to collaborate in real-time. Features include drag-and-drop task boards, deadline tracking, team member assignments, and progress visualization.',
       features: [
@@ -80,9 +64,9 @@ export default function AllProjectsPage() {
       tech: ['Next.js', 'TypeScript', 'Firebase', 'Tailwind CSS'],
       category: 'Full Stack',
       github: '#',
-      demo: '#',
-      image: '/projects/placeholder.png',
-      year: '2024'
+      demo: 'https://mern-todos-task-manager.vercel.app/',
+      image: '/projects/Task-Manager.png',
+      year: '2025'
     },
     {
       title: 'Portfolio Website Template',
@@ -98,28 +82,29 @@ export default function AllProjectsPage() {
       tech: ['React.js', 'Tailwind CSS', 'Framer Motion'],
       category: 'Frontend',
       github: '#',
-      demo: '#',
-      image: '/projects/placeholder.png',
-      year: '2024'
+      demo: 'https://maaz-portfolio-xi.vercel.app/',
+      image: '/projects/Portfolioo.png',
+      year: '2026'
     },
     {
-      title: 'Weather Dashboard',
-      description: 'A beautiful weather application that provides real-time weather data, forecasts, and interactive maps.',
-      longDescription: 'Built a comprehensive weather dashboard using external weather APIs. Features include current weather conditions, 7-day forecasts, hourly predictions, and interactive weather maps with multiple layers.',
+      title: 'Resume Analytics & Career Recommender',
+      description: 'An AI-powered web platform for users to share, filter, and explore thoughts and ideas with integrated Chatbot AI for content suggestions.',
+      longDescription: 'Built an AI-powered web platform that allows users to share, filter, and explore thoughts and ideas. Integrated Chatbot AI (OpenAI API) to generate content suggestions and interactive replies. Implemented smart tagging, search filters, and auto-categorization for improved UX. Developed a dynamic profile system that showcases best posts and interaction stats.',
       features: [
-        'Real-time weather data',
-        '7-day forecasts',
-        'Interactive maps',
-        'Location search',
-        'Weather alerts'
+        'OpenAI API integration for content suggestions',
+        'Smart tagging and search filters',
+        'Dynamic profile system',
+        'Auto-categorization',
+        'Real-time interactions'
       ],
-      tech: ['React.js', 'API Integration', 'Chart.js', 'Tailwind CSS'],
-      category: 'Frontend',
-      github: '#',
+      tech: ['React.js', 'Node.js', 'MongoDB', 'OpenAI API', 'Express.js'],
+      category: 'Full Stack',
+      github: 'https://github.com/maaz81/AI-Thought-Sharing-Webapp',
       demo: '#',
-      image: '/projects/placeholder.png',
-      year: '2023'
+      image: '/projects/ai-thought-sharing.png',
+      year: '2026'
     },
+
   ];
 
   const categories = ['All', 'Full Stack', 'Frontend', 'Backend'];
@@ -127,6 +112,10 @@ export default function AllProjectsPage() {
   const filteredProjects = activeFilter === 'All'
     ? projects
     : projects.filter(project => project.category === activeFilter);
+
+  useEffect(() => {
+    document.body.style.overflow = selectedProject ? "hidden" : "auto";
+  }, [selectedProject]);
 
   return (
     <div className="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 min-h-screen text-white">
@@ -195,11 +184,8 @@ export default function AllProjectsPage() {
             {filteredProjects.map((project, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
-                className="bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-purple-500/20 overflow-hidden group"
+                onClick={() => setSelectedProject(project)}
+                className="cursor-pointer bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-purple-500/20 overflow-hidden group"
               >
                 {/* Project Image */}
                 <div className="relative h-48 overflow-hidden">
@@ -313,7 +299,10 @@ export default function AllProjectsPage() {
           </motion.div>
         </div>
       </section>
-
+      <ProjectModal
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
       <Footer />
     </div>
   );
