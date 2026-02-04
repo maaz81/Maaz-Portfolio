@@ -46,7 +46,7 @@ export default function AllProjectsPage() {
       tech: ['React.js', 'Framer Motion', 'Tailwind CSS', 'JavaScript'],
       category: 'Frontend',
       github: 'https://github.com/maaz81/Ochi-Clone-Project',
-      demo: '#',
+      demo: 'https://ochi-clone-project.vercel.app/',
       image: '/projects/ochi-design.png',
       year: '2025'
     },
@@ -242,6 +242,7 @@ export default function AllProjectsPage() {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
                       className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-slate-700/50 rounded-lg hover:bg-purple-600 transition-all duration-300"
                     >
                       <Github size={18} />
@@ -249,6 +250,9 @@ export default function AllProjectsPage() {
                     </a>
                     <a
                       href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
                       className="flex-1 flex items-center justify-center gap-2 px-4 py-2 border-2 border-purple-500 rounded-lg hover:bg-purple-500/10 transition-all duration-300"
                     >
                       <ExternalLink size={18} />

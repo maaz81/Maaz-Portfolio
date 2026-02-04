@@ -27,8 +27,8 @@ export default function Projects() {
       description: 'A pixel-perfect, responsive frontend clone of the Ochi Design agency website with smooth UI animations using Framer Motion.',
       tech: ['React.js', 'Framer Motion', 'Tailwind CSS'],
       github: 'https://github.com/maaz81/Ochi-Clone-Project',
-      demo: '#',
-      image: '/projects/ochi-clone.png',
+      demo: 'https://ochi-clone-project.vercel.app/',
+      image: '/projects/ochi-design.png',
     },
   ];
 
