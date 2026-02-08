@@ -33,7 +33,7 @@ export default function Projects() {
   ];
 
   return (
-    <section id="projects" className="py-20 px-4 bg-slate-900/50">
+    <section id="projects" className="py-16 sm:py-20 px-4 bg-slate-900/50">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -41,7 +41,7 @@ export default function Projects() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">
             Featured <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Projects</span>
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto mb-12"></div>
@@ -54,9 +54,7 @@ export default function Projects() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                className={`grid md:grid-cols-2 gap-8 items-center ${index % 2 === 1 ? 'md:flex-row-reverse' : ''
-                  }`}
-              >
+                className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"              >
                 {/* Project Image */}
                 <motion.div
                   whileHover={{ scale: 1.05 }}
@@ -67,7 +65,7 @@ export default function Projects() {
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="relative w-full rounded-2xl border border-purple-500/20"
+                      className="relative w-full max-h-[320px] md:max-h-none object-cover rounded-2xl border border-purple-500/20"
                     // onError={(e) => {
                     //   e.target.src = `https://via.placeholder.com/600x400/1e293b/${index % 2 === 0 ? 'a78bfa' : 'ec4899'}?text=${project.title}`;
                     // }}
@@ -77,19 +75,21 @@ export default function Projects() {
 
                 {/* Project Details */}
                 <div className={`${index % 2 === 1 ? 'md:order-1' : ''}`}>
-                  <h3 className="text-3xl font-bold mb-4 text-purple-400">{project.title}</h3>
-                  <p className="text-gray-400 text-lg mb-6">{project.description}</p>
+                  <h3 className="text-2xl sm:text-3xl font-bold mb-4 text-purple-400">
+{project.title}</h3>
+                  <p className="text-gray-400 text-base sm:text-lg mb-6">
+{project.description}</p>
                   <div className="flex flex-wrap gap-2 mb-6">
                     {project.tech.map((tech, idx) => (
                       <span
                         key={idx}
-                        className="px-4 py-2 bg-purple-500/20 rounded-full text-sm border border-purple-500/30"
+                        className="px-3 py-1 sm:px-4 sm:py-2 bg-purple-500/20 rounded-full text-xs sm:text-sm border border-purple-500/30"
                       >
                         {tech}
                       </span>
                     ))}
                   </div>
-                  <div className="flex gap-4">
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
                     <a
                       href={project.github}
                       target="_blank"
@@ -122,7 +122,7 @@ export default function Projects() {
           >
             <Link
               to="/projects"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg font-semibold text-lg hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300"
+              className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4  bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg font-semibold text-lg hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300"
             >
               View All Projects
               <ArrowRight size={20} />
