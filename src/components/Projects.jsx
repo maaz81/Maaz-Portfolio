@@ -58,7 +58,7 @@ export default function Projects() {
                 {/* Project Image */}
                 <motion.div
                   whileHover={{ scale: 1.05 }}
-                  className={`${index % 2 === 1 ? 'md:order-2' : ''}`}
+                  className={`order-first md:${index % 2 === 1 ? 'order-2' : 'order-1'}`}
                 >
                   <div className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl blur-xl opacity-30 group-hover:opacity-50 transition-opacity"></div>
@@ -74,11 +74,11 @@ export default function Projects() {
                 </motion.div>
 
                 {/* Project Details */}
-                <div className={`${index % 2 === 1 ? 'md:order-1' : ''}`}>
+                <div className={`order-last md:${index % 2 === 1 ? 'order-1' : 'order-2'}`}>
                   <h3 className="text-2xl sm:text-3xl font-bold mb-4 text-purple-400">
-{project.title}</h3>
+                    {project.title}</h3>
                   <p className="text-gray-400 text-base sm:text-lg mb-6">
-{project.description}</p>
+                    {project.description}</p>
                   <div className="flex flex-wrap gap-2 mb-6">
                     {project.tech.map((tech, idx) => (
                       <span
