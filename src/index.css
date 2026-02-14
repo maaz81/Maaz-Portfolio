@@ -31,3 +31,8 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(to bottom, #9333ea, #db2777);
 }
+
+:focus-visible {
+  outline: 2px solid #a855f7;
+  outline-offset: 2px;
+}

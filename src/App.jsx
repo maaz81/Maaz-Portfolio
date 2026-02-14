@@ -8,6 +8,8 @@ import Experience from './components/Experience';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
+import NotFound from './pages/NotFound';
 const AllProjectsPage = React.lazy(() => import('./pages/AllProjects'));
 
 export default function App() {
@@ -20,6 +22,9 @@ export default function App() {
 
           {/* All Projects Page */}
           <Route path="/projects" element={<AllProjectsPage />} />
+
+          {/* Not Found Page */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </React.Suspense>
     </Router>
@@ -59,6 +64,7 @@ function HomePage() {
       <Projects />
       <Contact />
       <Footer />
+      <ScrollToTop />
     </div>
   );
 }
