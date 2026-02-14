@@ -6,21 +6,13 @@ import { Link } from 'react-router-dom';
 
 export default function Projects() {
   const projects = [
-    // {
-    //   title: 'AI-Thought-Sharing Webapp',
-    //   description: 'An AI-powered web platform for users to share, filter, and explore thoughts and ideas with integrated Chatbot AI for content suggestions.',
-    //   tech: ['React.js', 'Node.js', 'MongoDB', 'OpenAI API'],
-    //   github: 'https://github.com/maaz81/AI-Thought-Sharing-Webapp',
-    //   demo: '#',
-    //   image: '/projects/ai-thought-sharing.png',
-    // },
     {
-      title: 'RememberMe - Task Manager App',
+      title: 'AI-Thought-Sharing Webapp',
       description: 'An AI-powered web platform for users to share, filter, and explore thoughts and ideas with integrated Chatbot AI for content suggestions.',
       tech: ['React.js', 'Node.js', 'MongoDB', 'OpenAI API'],
       github: 'https://github.com/maaz81/AI-Thought-Sharing-Webapp',
-      demo: 'https://mern-todos-task-manager.vercel.app/',
-      image: '/projects/Task-Manager.png',
+      demo: 'https://thoughtly.vercel.app/',
+      image: '/projects/Ai-thought.png',
     },
     {
       title: 'Ochi. Design Clone',
