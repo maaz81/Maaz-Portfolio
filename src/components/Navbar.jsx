@@ -1,44 +1,42 @@
-import React, { useEffect, useState } from 'react';
-// eslint-disable-next-line no-unused-vars
-import { motion } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { NAV_ITEMS } from "../constants/nav";
 
 export default function Navbar({ isMenuOpen, setIsMenuOpen, activeSection }) {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-  const isHomePage = location.pathname === '/';
+  const navigate = useNavigate();
+
+  const isHomePage = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navItems = [
-    { id: 'home', label: 'Home', path: '/' },
-    { id: 'about', label: 'About', path: '/#about' },
-    { id: 'skills', label: 'Skills', path: '/#skills' },
-    { id: 'experience', label: 'Experience', path: '/#experience' },
-    { id: 'projects', label: 'Projects', path: '/projects' },
-    { id: 'contact', label: 'Contact', path: '/#contact' },
-  ];
-
-  const handleNavClick = (item) => {
-    if (item.id === 'projects') {
-      // Navigate to projects page
-      return;
-    }
-
-    if (isHomePage && item.path.startsWith('/#')) {
-      // Smooth scroll on home page
+  const handleSectionNavigation = (item) => {
+    if (isHomePage) {
       const element = document.getElementById(item.id);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        element.scrollIntoView({ behavior: "smooth" });
       }
+    } else {
+      // Navigate to home first, then scroll
+      navigate("/");
+      setTimeout(() => {
+        const element = document.getElementById(item.id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
     }
+
     setIsMenuOpen(false);
   };
 
@@ -46,7 +44,9 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen, activeSection }) {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-slate-900/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
+      className={`fixed w-full z-50 transition-all duration-300 ${scrolled
+          ? "bg-slate-900/95 backdrop-blur-md shadow-lg"
+          : "bg-transparent"
         }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -54,18 +54,17 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen, activeSection }) {
           {/* Logo */}
           <Link to="/">
             <motion.div
-              className="text-xl sm:text-2xl  font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent cursor-pointer"
               whileHover={{ scale: 1.05 }}
+              className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent cursor-pointer"
             >
               MAK
             </motion.div>
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Nav */}
           <div className="hidden md:flex lg:space-x-8 md:space-x-5">
-
-            {navItems.map((item) => (
-              item.id === 'projects' ? (
+            {NAV_ITEMS.map((item) =>
+              item.type === "page" ? (
                 <Link
                   key={item.id}
                   to={item.path}
@@ -74,22 +73,21 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen, activeSection }) {
                   {item.label}
                 </Link>
               ) : (
-                <a
+                <button
                   key={item.id}
-                  href={item.path}
-                  onClick={() => handleNavClick(item)}
+                  onClick={() => handleSectionNavigation(item)}
                   className={`transition-colors duration-300 ${activeSection === item.id && isHomePage
-                      ? 'text-purple-400'
-                      : 'text-gray-300 hover:text-white'
+                      ? "text-purple-400"
+                      : "text-gray-300 hover:text-white"
                     }`}
                 >
                   {item.label}
-                </a>
+                </button>
               )
-            ))}
+            )}
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Button */}
           <button
             className="md:hidden text-white"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -107,8 +105,8 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen, activeSection }) {
           className="md:hidden fixed inset-0 top-16 bg-slate-900/98 backdrop-blur-md"
         >
           <div className="px-4 pt-2 pb-4 space-y-2">
-            {navItems.map((item) => (
-              item.id === 'projects' ? (
+            {NAV_ITEMS.map((item) =>
+              item.type === "page" ? (
                 <Link
                   key={item.id}
                   to={item.path}
@@ -118,16 +116,15 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen, activeSection }) {
                   {item.label}
                 </Link>
               ) : (
-                <a
+                <button
                   key={item.id}
-                  href={item.path}
-                  onClick={() => handleNavClick(item)}
-                  className="block py-4 text-lg text-gray-300 hover:text-purple-400 transition-colors"
+                  onClick={() => handleSectionNavigation(item)}
+                  className="block py-4 text-lg text-gray-300 hover:text-purple-400 transition-colors text-left w-full"
                 >
                   {item.label}
-                </a>
+                </button>
               )
-            ))}
+            )}
           </div>
         </motion.div>
       )}

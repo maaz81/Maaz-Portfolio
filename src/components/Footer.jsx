@@ -1,4 +1,5 @@
 import React from 'react';
+import { FOOTER_DATA } from "../constants";
 
 export default function Footer() {
   return (
@@ -6,16 +7,16 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-gray-400">
-            &copy; 2026 Maaz Ahmad Khan. All rights reserved.
+            &copy; {FOOTER_DATA.year} {FOOTER_DATA.name}. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <a href="https://github.com/maaz81" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-purple-400 transition-colors">
+            <a href={FOOTER_DATA.socialLinks.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-purple-400 transition-colors">
               GitHub
             </a>
-            <a href="https://www.linkedin.com/in/maaz-ahmad-khan-b052062b6/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-purple-400 transition-colors">
+            <a href={FOOTER_DATA.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-purple-400 transition-colors">
               LinkedIn
             </a>
-            <a href="mailto:khanmaazahmad7@gmail.com" className="text-gray-400 hover:text-purple-400 transition-colors">
+            <a href={`mailto:{FOOTER_DATA.socialLinks.email}`} className="text-gray-400 hover:text-purple-400 transition-colors">
               Email
             </a>
           </div>

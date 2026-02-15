@@ -1,21 +1,36 @@
-import React, { useState } from 'react';
-// eslint-disable-next-line no-unused-vars
-import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Github, Linkedin } from 'lucide-react';
-import emailjs from '@emailjs/browser';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { Mail, Phone, MapPin, Github, Linkedin, Instagram } from "lucide-react";
+import emailjs from "@emailjs/browser";
+import { CONTACT_DATA } from "../constants/contact";
+
+// Map social keys → icons
+const SOCIAL_ICON_MAP = {
+  github: Github,
+  linkedin: Linkedin,
+  instagram: Instagram,
+};
 
 export default function Contact() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
-  const [status, setStatus] = useState('');
+
+  const [status, setStatus] = useState("");
+
+  const handleChange = (e) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.id]: e.target.value,
+    }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus('sending');
+    setStatus("sending");
 
     try {
       await emailjs.send(
@@ -30,12 +45,14 @@ export default function Contact() {
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
 
-      setStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      setTimeout(() => setStatus(''), 3000);
-    } catch {
-      setStatus('error');
-      setTimeout(() => setStatus(''), 3000);
+      setStatus("success");
+      setFormData({ name: "", email: "", subject: "", message: "" });
+
+      setTimeout(() => setStatus(""), 3000);
+    } catch (error) {
+      console.error("Email error:", error);
+      setStatus("error");
+      setTimeout(() => setStatus(""), 3000);
     }
   };
 
@@ -49,8 +66,12 @@ export default function Contact() {
           viewport={{ once: true }}
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">
-            Get In <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Touch</span>
+            Get In{" "}
+            <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              Touch
+            </span>
           </h2>
+
           <div className="w-20 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto mb-12"></div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -61,59 +82,81 @@ export default function Contact() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-2xl sm:text-3xl font-bold mb-6">Let's work together!</h3>
-              <p className="text-gray-400 text-base sm:text-lg mb-8">
+              <h3 className="text-2xl sm:text-3xl font-bold mb-6">
+                {CONTACT_DATA.heading}
+              </h3>
 
-                I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+              <p className="text-gray-400 text-base sm:text-lg mb-8">
+                {CONTACT_DATA.description}
               </p>
 
               <div className="space-y-6">
+                {/* Email */}
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-purple-500/20 rounded-lg">
                     <Mail className="text-purple-400" size={24} />
                   </div>
                   <div>
                     <h4 className="font-semibold mb-1">Email</h4>
-                    <a href="mailto:khanmaazahmad7@gmail.com" className="text-gray-400 hover:text-purple-400 transition-colors">
-                      khanmaazahmad7@gmail.com
+                    <a
+                      href={`mailto:${CONTACT_DATA.email}`}
+                      className="text-gray-400 hover:text-purple-400 transition-colors"
+                    >
+                      {CONTACT_DATA.email}
                     </a>
                   </div>
                 </div>
 
+                {/* Phone */}
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-purple-500/20 rounded-lg">
                     <Phone className="text-purple-400" size={24} />
                   </div>
                   <div>
                     <h4 className="font-semibold mb-1">Phone</h4>
-                    <a href="tel:+919022306469" className="text-gray-400 hover:text-purple-400 transition-colors">
-                      +91 9022306469
+                    <a
+                      href={`tel:${CONTACT_DATA.phone}`}
+                      className="text-gray-400 hover:text-purple-400 transition-colors"
+                    >
+                      {CONTACT_DATA.phone}
                     </a>
                   </div>
                 </div>
 
+                {/* Location */}
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-purple-500/20 rounded-lg">
                     <MapPin className="text-purple-400" size={24} />
                   </div>
                   <div>
                     <h4 className="font-semibold mb-1">Location</h4>
-                    <p className="text-gray-400">Achalpur, Maharashtra, India</p>
+                    <p className="text-gray-400">{CONTACT_DATA.location}</p>
                   </div>
                 </div>
               </div>
 
+              {/* Social Links */}
               <div className="mt-8">
                 <h4 className="font-semibold mb-4">Connect with me</h4>
-                <div className="flex gap-4 justify-center md:justify-start">                  <a href="https://github.com/maaz81" target="_blank" rel="noopener noreferrer" className="p-3 bg-slate-800 rounded-lg hover:bg-purple-600 transition-all duration-300">
-                  <Github size={24} />
-                </a>
-                  <a href="https://www.linkedin.com/in/maaz-ahmad-khan-b052062b6/" target="_blank" rel="noopener noreferrer" className="p-3 bg-slate-800 rounded-lg hover:bg-purple-600 transition-all duration-300">
-                    <Linkedin size={24} />
-                  </a>
-                  <a href="mailto:khanmaazahmad7@gmail.com" className="p-3 bg-slate-800 rounded-lg hover:bg-purple-600 transition-all duration-300">
-                    <Mail size={24} />
-                  </a>
+                <div className="flex gap-4 justify-center md:justify-start">
+                  {Object.entries(CONTACT_DATA.socialLinks).map(
+                    ([key, url]) => {
+                      const Icon = SOCIAL_ICON_MAP[key];
+                      if (!Icon) return null;
+
+                      return (
+                        <a
+                          key={key}
+                          href={url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-3 bg-slate-800 rounded-lg hover:bg-purple-600 transition-all duration-300"
+                        >
+                          <Icon size={24} />
+                        </a>
+                      );
+                    }
+                  )}
                 </div>
               </div>
             </motion.div>
@@ -125,73 +168,64 @@ export default function Contact() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <form onSubmit={handleSubmit} className="bg-slate-800/50 backdrop-blur-sm p-6 sm:p-8 rounded-2xl border border-purple-500/20"
+              <form
+                onSubmit={handleSubmit}
+                className="bg-slate-800/50 backdrop-blur-sm p-6 sm:p-8 rounded-2xl border border-purple-500/20"
               >
-                <div className="mb-6">
-                  <label htmlFor="name" className="block text-sm font-semibold mb-2">Your Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    required
-                    className="w-full px-4 py-3 text-sm sm:text-base bg-slate-900/50 border border-slate-700 rounded-lg focus:outline-none focus:border-purple-500 transition-colors"
-                    placeholder="John Doe"
-                  />
-                </div>
+                {["name", "email", "subject"].map((field) => (
+                  <div key={field} className="mb-6">
+                    <label
+                      htmlFor={field}
+                      className="block text-sm font-semibold mb-2 capitalize"
+                    >
+                      {field}
+                    </label>
+                    <input
+                      type={field === "email" ? "email" : "text"}
+                      id={field}
+                      value={formData[field]}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg focus:outline-none focus:border-purple-500 transition-colors"
+                    />
+                  </div>
+                ))}
 
                 <div className="mb-6">
-                  <label htmlFor="email" className="block text-sm font-semibold mb-2">Your Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    required
-                    className="w-full px-4 py-3 text-sm sm:text-base bg-slate-900/50 border border-slate-700 rounded-lg focus:outline-none focus:border-purple-500 transition-colors"
-                    placeholder="john@example.com"
-                  />
-                </div>
-
-                <div className="mb-6">
-                  <label htmlFor="subject" className="block text-sm font-semibold mb-2">Subject</label>
-                  <input
-                    type="text"
-                    id="subject"
-                    value={formData.subject}
-                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    required
-                    className="w-full px-4 py-3 text-sm sm:text-base bg-slate-900/50 border border-slate-700 rounded-lg focus:outline-none focus:border-purple-500 transition-colors"
-                    placeholder="Project Inquiry"
-                  />
-                </div>
-
-                <div className="mb-6">
-                  <label htmlFor="message" className="block text-sm font-semibold mb-2">Message</label>
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-semibold mb-2"
+                  >
+                    Message
+                  </label>
                   <textarea
                     id="message"
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    required
                     rows="5"
-                    className="w-full px-4 py-3 text-sm sm:text-base bg-slate-900/50 border border-slate-700 rounded-lg focus:outline-none focus:border-purple-500 transition-colors resize-none"
-                    placeholder="Tell me about your project..."
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg focus:outline-none focus:border-purple-500 transition-colors resize-none"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  disabled={status === 'sending'}
-                  className="w-full px-6 sm:px-8 py-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 disabled:opacity-50"
+                  disabled={status === "sending"}
+                  className="w-full px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 disabled:opacity-50"
                 >
-                  {status === 'sending' ? 'Sending...' : 'Send Message'}
+                  {status === "sending" ? "Sending..." : "Send Message"}
                 </button>
 
-                {status === 'success' && (
-                  <p className="mt-4 text-green-400 text-center">Message sent successfully!</p>
+                {status === "success" && (
+                  <p className="mt-4 text-green-400 text-center">
+                    Message sent successfully!
+                  </p>
                 )}
-                {status === 'error' && (
-                  <p className="mt-4 text-red-400 text-center">Failed to send message. Please try again.</p>
+
+                {status === "error" && (
+                  <p className="mt-4 text-red-400 text-center">
+                    Failed to send message. Please try again.
+                  </p>
                 )}
               </form>
             </motion.div>

@@ -2,6 +2,8 @@ import React from 'react';
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
 import { Download, MapPin, Mail, GraduationCap, Briefcase } from 'lucide-react';
+import { ABOUT_DATA } from "../constants";
+
 
 export default function About() {
   return (

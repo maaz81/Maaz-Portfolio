@@ -2,6 +2,8 @@ import React from 'react';
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail } from 'lucide-react';
+import { HERO_DATA } from "../constants";
+
 
 export default function Hero() {
   return (
@@ -24,7 +26,8 @@ export default function Hero() {
             transition={{ delay: 0.2 }}
             className="text-purple-400 text-xl mb-2"
           >
-            Hello, I'm
+            {HERO_DATA.greeting}
+
           </motion.h3>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -32,22 +35,24 @@ export default function Hero() {
             transition={{ delay: 0.3 }}
             className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-4 bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent"
           >
-            Maaz Ahmad Khan
+            {HERO_DATA.name}
+
           </motion.h1>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
             className="text-xl sm:text-2xl md:text-3xl text-gray-300 mb-6"          >
-            Full Stack Web Developer
+            {HERO_DATA.role}
+
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
             className="text-gray-400 text-base sm:text-lg mb-8 max-w-xl mx-auto md:mx-0"          >
-            MERN Stack Developer passionate about building responsive UIs and scalable backends.
-            Specializing in React.js, Node.js, and creating SEO-friendly web solutions.
+            {HERO_DATA.description}
+
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -75,13 +80,13 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8 }}
             className="flex gap-4 mt-8 justify-center md:justify-start"          >
-            <a href="https://github.com/maaz81" target="_blank" rel="noopener noreferrer" className="p-3 bg-slate-800 rounded-lg hover:bg-purple-600 transition-all duration-300">
+            <a href={HERO_DATA.socialLinks.github} target="_blank" rel="noopener noreferrer" className="p-3 bg-slate-800 rounded-lg hover:bg-purple-600 transition-all duration-300">
               <Github size={24} />
             </a>
-            <a href="https://www.linkedin.com/in/maaz-ahmad-khan-b052062b6/" target="_blank" rel="noopener noreferrer" className="p-3 bg-slate-800 rounded-lg hover:bg-purple-600 transition-all duration-300">
+            <a href={HERO_DATA.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="p-3 bg-slate-800 rounded-lg hover:bg-purple-600 transition-all duration-300">
               <Linkedin size={24} />
             </a>
-            <a href="mailto:khanmaazahmad7@gmail.com" className="p-3 bg-slate-800 rounded-lg hover:bg-purple-600 transition-all duration-300">
+            <a href={`mailto:${HERO_DATA.socialLinks.email}`} className="p-3 bg-slate-800 rounded-lg hover:bg-purple-600 transition-all duration-300">
               <Mail size={24} />
             </a>
           </motion.div>
@@ -101,7 +106,7 @@ export default function Hero() {
  rounded-full overflow-hidden border-4 border-purple-500/50">
               {/* Replace with your photo */}
               <img
-                src="/Maaz_profile.jpg"
+                src={HERO_DATA.profileImage}
                 alt="Maaz Ahmad Khan"
                 className="w-full h-full object-cover"
                 onError={(e) => {
