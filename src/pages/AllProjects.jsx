@@ -7,6 +7,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ProjectModal from './ProjectModal';
 
+
 import SEO from '../components/SEO';
 import { PROJECTS } from '../constants/projects';
 
