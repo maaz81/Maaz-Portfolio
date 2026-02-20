@@ -94,23 +94,21 @@ export default function Hero() {
 
         {/* Right Image */}
         <motion.div
-          className="flex justify-center order-first md:order-last mb-12 md:mb-0"
+          className="flex justify-center order-first md:order-last mb-12 md:mb-0 relative"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
-
           <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-3xl opacity-30"></div>
-            <div className="relative w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96
- rounded-full overflow-hidden border-4 border-purple-500/50">
-              {/* Replace with your photo */}
+            {/* Reduced blur spread to prevent mobile overflow */}
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-2xl opacity-30"></div>
+            <div className="relative w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-purple-500/50 shadow-2xl shadow-purple-500/20">
               <img
-                src={HERO_DATA.profileImage}
+                src="/Maaz_profile.jpg"
                 alt="Maaz Ahmad Khan"
                 className="w-full h-full object-cover"
                 onError={(e) => {
-                  e.target.src = 'https://via.placeholder.com/400x400/1e293b/a78bfa?text=Your+Photo';
+                  e.target.src = 'https://via.placeholder.com/400x400/1e293b/a78bfa?text=Maaz';
                 }}
               />
             </div>

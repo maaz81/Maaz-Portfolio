@@ -10,24 +10,30 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import NotFound from './pages/NotFound';
+import SEO from './components/SEO';
 const AllProjectsPage = React.lazy(() => import('./pages/AllProjects'));
+
+import { HelmetProvider } from 'react-helmet-async';
 
 export default function App() {
   return (
-    <Router>
-      <React.Suspense fallback={<div className='min-h-screen flex items-center justify-center bg-slate-900 text-white'>Loading...</div>}>
-        <Routes>
-          {/* Home Page */}
-          <Route path="/" element={<HomePage />} />
+    <HelmetProvider>
+      <Router>
+        <React.Suspense fallback={<div className='min-h-screen flex items-center justify-center bg-slate-900 text-white'>Loading...</div>}>
+          <Routes>
+            {/* Home Page */}
+            <Route path="/" element={<HomePage />} />
 
-          {/* All Projects Page */}
-          <Route path="/projects" element={<AllProjectsPage />} />
+            {/* All Projects Page */}
+            <Route path="/projects" element={<AllProjectsPage />} />
 
-          {/* Not Found Page */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </React.Suspense>
-    </Router>
+            {/* Not Found Page */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </React.Suspense>
+        <ScrollToTop />
+      </Router>
+    </HelmetProvider>
   );
 }
 
@@ -56,6 +62,7 @@ function HomePage() {
 
   return (
     <div className="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 min-h-screen text-white">
+      <SEO />
       <Navbar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} activeSection={activeSection} />
       <Hero />
       <About />
@@ -64,7 +71,6 @@ function HomePage() {
       <Projects />
       <Contact />
       <Footer />
-      <ScrollToTop />
     </div>
   );
 }

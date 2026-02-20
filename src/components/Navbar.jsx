@@ -40,13 +40,18 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen, activeSection }) {
     setIsMenuOpen(false);
   };
 
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? "hidden" : "auto";
+  }, [isMenuOpen]);
+
+
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed w-full z-50 transition-all duration-300 ${scrolled
-          ? "bg-slate-900/95 backdrop-blur-md shadow-lg"
-          : "bg-transparent"
+        ? "bg-slate-900/95 backdrop-blur-md shadow-lg"
+        : "bg-transparent"
         }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -77,8 +82,8 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen, activeSection }) {
                   key={item.id}
                   onClick={() => handleSectionNavigation(item)}
                   className={`transition-colors duration-300 ${activeSection === item.id && isHomePage
-                      ? "text-purple-400"
-                      : "text-gray-300 hover:text-white"
+                    ? "text-purple-400"
+                    : "text-gray-300 hover:text-white"
                     }`}
                 >
                   {item.label}
@@ -102,7 +107,7 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen, activeSection }) {
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="md:hidden fixed inset-0 top-16 bg-slate-900/98 backdrop-blur-md"
+          className="md:hidden fixed inset-0 top-16 bg-slate-900/95 backdrop-blur-xl border-t border-slate-800 z-40"
         >
           <div className="px-4 pt-2 pb-4 space-y-2">
             {NAV_ITEMS.map((item) =>
