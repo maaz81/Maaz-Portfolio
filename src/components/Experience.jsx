@@ -4,6 +4,7 @@ import { Briefcase, GraduationCap } from "lucide-react";
 import {
   EXPERIENCE_DATA,
   EDUCATION_DATA,
+  TRAINING_DATA,
 } from "../constants/experience";
 
 export default function Experience() {
@@ -70,37 +71,81 @@ export default function Experience() {
               ))}
             </motion.div>
 
-            {/* EDUCATION */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <h3 className="text-xl sm:text-2xl font-bold mb-6 flex items-center gap-2 justify-center md:justify-start">
-                <GraduationCap className="text-purple-400" />
-                Education
-              </h3>
+            <div className="flex flex-col gap-8">
+              {/* EDUCATION */}
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+              >
+                <h3 className="text-xl sm:text-2xl font-bold mb-6 flex items-center gap-2 justify-center md:justify-start">
+                  <GraduationCap className="text-purple-400" />
+                  Education
+                </h3>
 
-              {EDUCATION_DATA.map((edu) => (
-                <div
-                  key={`${edu.degree}-${edu.institution}`}
-                  className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-2xl border border-purple-500/20 mb-4"
-                >
-                  <h4 className="text-xl font-bold text-purple-400 mb-2">
-                    {edu.degree}
-                  </h4>
+                {EDUCATION_DATA.map((edu) => (
+                  <div
+                    key={`${edu.degree}-${edu.institution}`}
+                    className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-2xl border border-purple-500/20 mb-4"
+                  >
+                    <h4 className="text-xl font-bold text-purple-400 mb-2">
+                      {edu.degree}
+                    </h4>
 
-                  <p className="text-gray-300 mb-1">
-                    {edu.institution}
-                  </p>
+                    <p className="text-gray-300 mb-1">
+                      {edu.institution}
+                    </p>
 
-                  <p className="text-sm text-gray-500">
-                    {edu.period}
-                  </p>
-                </div>
-              ))}
-            </motion.div>
+                    <p className="text-sm text-gray-500">
+                      {edu.period}
+                    </p>
+
+                    {/* <p className="text-sm text-gray-500">
+                      {edu.description}
+                    </p> */}
+
+                  </div>
+                ))}
+              </motion.div>
+
+              {/* TRAINING */}
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+              >
+                <h3 className="text-xl sm:text-2xl font-bold mb-6 flex items-center gap-2 justify-center md:justify-start">
+                  <GraduationCap className="text-purple-400" />
+                  Training
+                </h3>
+
+                {TRAINING_DATA.map((edu) => (
+                  <div
+                    key={`${edu.degree}-${edu.institution}`}
+                    className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-2xl border border-purple-500/20 mb-4"
+                  >
+                    <h4 className="text-xl font-bold text-purple-400 mb-2">
+                      {edu.title}
+                    </h4>
+
+                    <p className="text-gray-300 mb-1">
+                      {edu.institution}
+                    </p>
+
+                    <p className="text-sm text-gray-500">
+                      {edu.period}
+                    </p>
+
+                    <p className="text-sm  text-gray-400 mt-2">
+                      {edu.description}
+                    </p>
+
+                  </div>
+                ))}
+              </motion.div>
+            </div>
           </div>
         </motion.div>
       </div>
