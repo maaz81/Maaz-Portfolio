@@ -1,5 +1,47 @@
 export const PROJECTS = [
     {
+        title: "Career AI – Resume Intelligence Platform",
+        year: "2025",
+        category: "Full Stack",
+        image: '/projects/Resume-Analytics.png',
+        description: "AI-powered resume intelligence platform to analyze resumes and calculate ATS compatibility.",
+        longDescription:
+            "Career AI is an AI-powered resume intelligence platform designed to analyze resumes, calculate ATS compatibility, and provide personalized career recommendations. The system combines a high-performance React dashboard, a scalable Node/Express backend, Redis caching, and a Python-based NLP engine to deliver accurate resume parsing and intelligent job matching insights.",
+        problem:
+            "Many candidates submit resumes that fail ATS filters due to poor keyword alignment, formatting issues, or lack of clarity on skill gaps. There is limited visibility into how resumes perform against real job descriptions.",
+        solution:
+            "Built a full-stack AI platform that parses resumes using Python NLP, extracts structured skills and experience data, calculates semantic similarity scores against job descriptions, and generates ATS compatibility and job match scores with actionable improvement suggestions.",
+        impact:
+            "Achieved 85%+ skill extraction accuracy using NLP models, reduced API response latency by 60% with Redis caching, and improved application performance by 40% through frontend optimization techniques like code-splitting and lazy loading.",
+        features: [
+            "AI-powered resume parsing with skill and experience extraction",
+            "ATS compatibility and Job Match scoring using semantic similarity analysis",
+            "Personalized skill gap detection and learning path recommendations",
+            "Secure JWT & Google OAuth authentication with RBAC",
+            "Redis caching layer for optimized API performance",
+            "Interactive analytics dashboard with real-time career insights"
+        ],
+        tech: [
+            "React.js",
+            "Redux Toolkit",
+            "Tailwind CSS",
+            "Node.js",
+            "Express.js",
+            "PostgreSQL",
+            "Prisma ORM",
+            "Redis",
+            "Python",
+            "NLP",
+            "JWT",
+            "Google OAuth"
+        ],
+        architecture:
+            "Designed as a modular full-stack system with a React + Redux frontend and a RESTful Node.js/Express backend. PostgreSQL with Prisma ORM manages relational resume and user data, while Redis provides a high-speed caching layer. A separate Python NLP service handles resume parsing, skill extraction, and semantic similarity scoring, enabling scalable and maintainable AI processing.",
+        github: "https://github.com/maaz81/Resume-Analytics-and-Career-Recommender",
+        demo: "https://career-ai-resume-analysis.vercel.app/",
+        featured: true
+    },
+    {
         title: "Thoughtly - AI Thought Sharing Webapp",
         year: "2025",
         category: "Full Stack",
@@ -54,48 +96,6 @@ export const PROJECTS = [
         tech: ['React.js', 'Framer Motion', 'Tailwind CSS', 'JavaScript'],
         github: 'https://github.com/maaz81/Ochi-Clone-Project',
         demo: 'https://ochi-clone-project.vercel.app/',
-        featured: true
-    },
-    {
-        title: "Career AI – Resume Intelligence Platform",
-        year: "2025",
-        category: "Full Stack",
-        image: '/projects/Resume-Analytics.png',
-        description: "AI-powered resume intelligence platform to analyze resumes and calculate ATS compatibility.",
-        longDescription:
-            "Career AI is an AI-powered resume intelligence platform designed to analyze resumes, calculate ATS compatibility, and provide personalized career recommendations. The system combines a high-performance React dashboard, a scalable Node/Express backend, Redis caching, and a Python-based NLP engine to deliver accurate resume parsing and intelligent job matching insights.",
-        problem:
-            "Many candidates submit resumes that fail ATS filters due to poor keyword alignment, formatting issues, or lack of clarity on skill gaps. There is limited visibility into how resumes perform against real job descriptions.",
-        solution:
-            "Built a full-stack AI platform that parses resumes using Python NLP, extracts structured skills and experience data, calculates semantic similarity scores against job descriptions, and generates ATS compatibility and job match scores with actionable improvement suggestions.",
-        impact:
-            "Achieved 85%+ skill extraction accuracy using NLP models, reduced API response latency by 60% with Redis caching, and improved application performance by 40% through frontend optimization techniques like code-splitting and lazy loading.",
-        features: [
-            "AI-powered resume parsing with skill and experience extraction",
-            "ATS compatibility and Job Match scoring using semantic similarity analysis",
-            "Personalized skill gap detection and learning path recommendations",
-            "Secure JWT & Google OAuth authentication with RBAC",
-            "Redis caching layer for optimized API performance",
-            "Interactive analytics dashboard with real-time career insights"
-        ],
-        tech: [
-            "React.js",
-            "Redux Toolkit",
-            "Tailwind CSS",
-            "Node.js",
-            "Express.js",
-            "PostgreSQL",
-            "Prisma ORM",
-            "Redis",
-            "Python",
-            "NLP",
-            "JWT",
-            "Google OAuth"
-        ],
-        architecture:
-            "Designed as a modular full-stack system with a React + Redux frontend and a RESTful Node.js/Express backend. PostgreSQL with Prisma ORM manages relational resume and user data, while Redis provides a high-speed caching layer. A separate Python NLP service handles resume parsing, skill extraction, and semantic similarity scoring, enabling scalable and maintainable AI processing.",
-        github: "https://github.com/maaz81/Resume-Analytics-and-Career-Recommender",
-        demo: "https://career-ai-demo.app",
         featured: true
     },
     {

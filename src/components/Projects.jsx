@@ -7,7 +7,7 @@ import { PROJECTS } from "../constants/projects";
 export default function Projects() {
   const featuredProjects = PROJECTS.filter(
     (project) => project.featured
-  );
+  ).slice(0, 2);
 
   return (
     <section id="projects" className="py-16 sm:py-20 px-4 bg-slate-900/50">
