@@ -10,116 +10,133 @@ export default function Projects() {
   ).slice(0, 2);
 
   return (
-    <section id="projects" className="py-16 sm:py-20 px-4 bg-slate-900/50">
-      <div className="max-w-7xl mx-auto">
+    <section
+      id="projects"
+      className="relative min-h-screen py-20 lg:py-28 px-5 sm:px-8 lg:px-12 bg-slate-900/50 overflow-hidden"
+    >
+      <div className="max-w-6xl mx-auto">
+
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.7 }}
           viewport={{ once: true }}
+          className="text-center mb-16 lg:mb-24"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
             Featured{" "}
             <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
               Projects
             </span>
           </h2>
 
-          <div className="w-20 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto mb-12"></div>
+          <p className="mt-4 text-gray-400 max-w-2xl mx-auto text-sm sm:text-base lg:text-lg">
+            A collection of projects showcasing frontend engineering,
+            full-stack development and modern web experiences.
+          </p>
 
-          <div className="space-y-12">
-            {featuredProjects.map((project, index) => {
-              const isReverse = index % 2 === 1;
+          <div className="w-24 h-[3px] rounded-full bg-gradient-to-r from-purple-500 to-pink-500 mx-auto mt-6" />
+        </motion.div>
 
-              return (
+        {/* Projects */}
+        <div className="space-y-24">
+          {featuredProjects.map((project, index) => {
+            const isReverse = index % 2 === 1;
+
+            return (
+              <motion.div
+                key={project.title}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7 }}
+                viewport={{ once: true }}
+                className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center"
+              >
+                {/* Image */}
                 <motion.div
-                  key={project.title}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8 }}
-                  viewport={{ once: true }}
-                  className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
+                  whileHover={{ y: -6 }}
+                  transition={{ duration: 0.3 }}
+                  className={isReverse ? "lg:order-2" : ""}
                 >
-                  {/* Project Image */}
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    className={isReverse ? "md:order-2" : "md:order-1"}
-                  >
-                    <div className="relative group">
-                      <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl blur-xl opacity-30 group-hover:opacity-50 transition-opacity"></div>
+                  <div className="relative group">
+                    <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-purple-500 to-pink-500 blur-2xl opacity-20 group-hover:opacity-40 transition duration-500" />
 
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="relative w-full max-h-[320px] md:max-h-none object-cover rounded-2xl border border-purple-500/20"
-                      />
-                    </div>
-                  </motion.div>
-
-                  {/* Project Details */}
-                  <div className={isReverse ? "md:order-1" : "md:order-2"}>
-                    <h3 className="text-2xl sm:text-3xl font-bold mb-4 text-purple-400">
-                      {project.title}
-                    </h3>
-
-                    <p className="text-gray-400 text-base sm:text-lg mb-6">
-                      {project.description}
-                    </p>
-
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {project.tech.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-3 py-1 sm:px-4 sm:py-2 bg-purple-500/20 rounded-full text-xs sm:text-sm border border-purple-500/30"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-slate-800 rounded-lg font-semibold hover:bg-purple-600 transition-all duration-300"
-                      >
-                        <Github size={20} />
-                        View Code
-                      </a>
-
-                      <a
-                        href={project.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-6 py-3 border-2 border-purple-500 rounded-lg font-semibold hover:bg-purple-500/10 transition-all duration-300"
-                      >
-                        <ExternalLink size={20} />
-                        Live Demo
-                      </a>
-                    </div>
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="relative w-full aspect-video object-cover rounded-3xl border border-purple-500/20 shadow-xl"
+                    />
                   </div>
                 </motion.div>
-              );
-            })}
-          </div>
 
-          {/* View All Projects Button */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            viewport={{ once: true }}
-            className="text-center mt-12"
+                {/* Content */}
+                <div className={isReverse ? "lg:order-1" : ""}>
+                  <h3 className="text-2xl lg:text-3xl font-bold text-purple-400 mb-5">
+                    {project.title}
+                  </h3>
+
+                  <p className="text-gray-400 leading-relaxed text-sm sm:text-base lg:text-lg mb-6">
+                    {project.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-3 mb-8">
+                    {project.tech.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-3 py-1.5 rounded-full text-xs sm:text-sm bg-purple-500/10 border border-purple-500/20 backdrop-blur-sm"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="flex flex-wrap gap-4">
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 transition-all duration-300"
+                    >
+                      <Github size={18} />
+                      View Code
+                    </a>
+
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-purple-500 hover:bg-purple-500/10 transition-all duration-300"
+                    >
+                      <ExternalLink size={18} />
+                      Live Demo
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="flex justify-center mt-24"
+        >
+          <Link
+            to="/projects"
+            className="group inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 font-medium text-base hover:scale-105 transition duration-300"
           >
-            <Link
-              to="/projects"
-              className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg font-semibold text-lg hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300"
-            >
-              View All Projects
-              <ArrowRight size={20} />
-            </Link>
-          </motion.div>
+            View All Projects
+
+            <ArrowRight
+              size={18}
+              className="group-hover:translate-x-1 transition-transform"
+            />
+          </Link>
         </motion.div>
       </div>
     </section>

@@ -10,7 +10,7 @@ export const HERO_DATA = {
 
     socialLinks: {
         github: "https://github.com/maaz81",
-        linkedin: "https://www.linkedin.com/in/maaz-ahmad-khan-b052062b6/",
+        linkedin: "https://www.linkedin.com/in/maazak90/",
         email: "khanmaazahmad7@gmail.com",
     },
 };

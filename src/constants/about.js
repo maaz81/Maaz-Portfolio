@@ -50,10 +50,10 @@ export const ABOUT_DATA = {
     ],
 
     details: [
-        { icon: "location", label: "Achalpur, India" },
+        { icon: "location", label: "Amravati, India" },
         { icon: "availability", label: "Available for work" },
-        { icon: "education", label: "B.E. Pursuing" },
-        { icon: "experience", label: "Open to Full Stack / SDE" },
+        { icon: "education", label: "B.E. Graduated" },
+        { icon: "experience", label: "10 Months Experience" },
     ],
 
     resumeLink: "/resume.pdf",

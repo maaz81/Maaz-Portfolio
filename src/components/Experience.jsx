@@ -1,153 +1,169 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Briefcase, GraduationCap } from "lucide-react";
+import { Briefcase, GraduationCap, BookOpen } from "lucide-react";
 import {
   EXPERIENCE_DATA,
   EDUCATION_DATA,
   TRAINING_DATA,
 } from "../constants/experience";
 
+const fadeIn = (axis = "y", dir = 28, delay = 0) => ({
+  initial: { opacity: 0, [axis]: dir },
+  whileInView: { opacity: 1, [axis]: 0 },
+  transition: { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] },
+  viewport: { once: true },
+});
+
+// ── Reusable card ──────────────────────────────────────────────────────────
+function Card({ children }) {
+  return (
+    <div className="bg-slate-800/50 backdrop-blur-sm p-5 rounded-2xl border border-purple-500/20 hover:border-purple-500/40 transition-colors duration-300 mb-4 last:mb-0">
+      {children}
+    </div>
+  );
+}
+
+// ── Sub-section heading ────────────────────────────────────────────────────
+function SubHeading({ icon: Icon, label }) {
+  return (
+    <h3
+      className="font-bold text-white flex items-center gap-2 mb-5 justify-center md:justify-start"
+      style={{ fontSize: "clamp(0.95rem, 1.8vw, 1.15rem)" }}
+    >
+      <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-purple-500/15 border border-purple-500/30">
+        <Icon size={16} className="text-purple-400" />
+      </span>
+      {label}
+    </h3>
+  );
+}
+
 export default function Experience() {
   return (
-    <section id="experience" className="py-16 sm:py-20 px-4">
-      <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">
+    <section id="experience" className="py-16 sm:py-20 px-5 sm:px-8 lg:px-12">
+      <div className="max-w-6xl mx-auto">
+
+        {/* ── Section header ── */}
+        <motion.div className="text-center mb-12" {...fadeIn("y", 28, 0)}>
+          <h2
+            className="font-extrabold tracking-tight mb-3"
+            style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)" }}
+          >
             Experience &{" "}
             <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
               Education
             </span>
           </h2>
+          <div className="w-14 h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full" />
+        </motion.div>
 
-          <div className="w-20 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto mb-12"></div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14 items-start">
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* EXPERIENCE */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <h3 className="text-xl sm:text-2xl font-bold mb-6 flex items-center gap-2 justify-center md:justify-start">
-                <Briefcase className="text-purple-400" />
-                Professional Experience
-              </h3>
+          {/* ── LEFT: Experience ── */}
+          <motion.div {...fadeIn("x", -32, 0.1)}>
+            <SubHeading icon={Briefcase} label="Professional Experience" />
 
-              {EXPERIENCE_DATA.map((exp) => (
-                <div
-                  key={`${exp.role}-${exp.company}`}
-                  className="bg-slate-800/50 backdrop-blur-sm p-5 sm:p-6 rounded-2xl border border-purple-500/20 mb-4"
+            {EXPERIENCE_DATA.map((exp) => (
+              <Card key={`${exp.role}-${exp.company}`}>
+                {/* Role */}
+                <h4
+                  className="font-bold text-purple-400 mb-1 leading-snug"
+                  style={{ fontSize: "clamp(0.9rem, 1.6vw, 1.05rem)" }}
                 >
-                  <h4 className="text-xl font-bold text-purple-400 mb-2">
-                    {exp.role}
+                  {exp.role}
+                </h4>
+
+                {/* Company & location */}
+                <p className="text-sm text-gray-300 mb-0.5">
+                  {exp.company}
+                  {exp.location && (
+                    <span className="text-gray-500"> · {exp.location}</span>
+                  )}
+                </p>
+
+                {/* Period badge */}
+                <span className="inline-block text-xs text-purple-300/70 bg-purple-500/10 border border-purple-500/20 rounded-full px-2.5 py-0.5 mb-4">
+                  {exp.period}
+                </span>
+
+                {/* Highlights */}
+                <ul className="space-y-2">
+                  {exp.highlights.map((highlight) => (
+                    <li
+                      key={highlight}
+                      className="flex items-start gap-2 text-gray-400"
+                      style={{ fontSize: "clamp(0.8rem, 1.3vw, 0.875rem)" }}
+                    >
+                      <span className="text-purple-400 mt-0.5 flex-shrink-0 text-xs">▸</span>
+                      <span className="leading-relaxed">{highlight}</span>
+                    </li>
+                  ))}
+                </ul>
+              </Card>
+            ))}
+          </motion.div>
+
+          {/* ── RIGHT: Education + Training ── */}
+          <div className="flex flex-col gap-10">
+
+            {/* Education */}
+            <motion.div {...fadeIn("x", 32, 0.15)}>
+              <SubHeading icon={GraduationCap} label="Education" />
+
+              {EDUCATION_DATA.map((edu) => (
+                <Card key={`${edu.degree}-${edu.institution}`}>
+                  <h4
+                    className="font-bold text-purple-400 mb-1 leading-snug"
+                    style={{ fontSize: "clamp(0.9rem, 1.6vw, 1.05rem)" }}
+                  >
+                    {edu.degree}
                   </h4>
-
-                  <p className="text-gray-300 mb-1">
-                    {exp.company} • {exp.location}
-                  </p>
-
-                  <p className="text-sm text-gray-500 mb-4">
-                    {exp.period}
-                  </p>
-
-                  <ul className="space-y-2">
-                    {exp.highlights.map((highlight) => (
-                      <li
-                        key={highlight}
-                        className="text-gray-400 text-sm sm:text-base flex items-start gap-2"
-                      >
-                        <span className="text-purple-400 mt-1">▸</span>
-                        <span>{highlight}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                  <p className="text-sm text-gray-300 mb-0.5">{edu.institution}</p>
+                  <span className="inline-block text-xs text-purple-300/70 bg-purple-500/10 border border-purple-500/20 rounded-full px-2.5 py-0.5">
+                    {edu.period}
+                  </span>
+                  {edu.description && (
+                    <p
+                      className="text-gray-400 mt-3 leading-relaxed"
+                      style={{ fontSize: "clamp(0.8rem, 1.3vw, 0.875rem)" }}
+                    >
+                      {edu.description}
+                    </p>
+                  )}
+                </Card>
               ))}
             </motion.div>
 
-            <div className="flex flex-col gap-8">
-              {/* EDUCATION */}
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-              >
-                <h3 className="text-xl sm:text-2xl font-bold mb-6 flex items-center gap-2 justify-center md:justify-start">
-                  <GraduationCap className="text-purple-400" />
-                  Education
-                </h3>
+            {/* Training */}
+            <motion.div {...fadeIn("x", 32, 0.22)}>
+              <SubHeading icon={BookOpen} label="Training" />
 
-                {EDUCATION_DATA.map((edu) => (
-                  <div
-                    key={`${edu.degree}-${edu.institution}`}
-                    className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-2xl border border-purple-500/20 mb-4"
+              {TRAINING_DATA.map((item) => (
+                <Card key={`${item.title}-${item.institution}`}>
+                  <h4
+                    className="font-bold text-purple-400 mb-1 leading-snug"
+                    style={{ fontSize: "clamp(0.9rem, 1.6vw, 1.05rem)" }}
                   >
-                    <h4 className="text-xl font-bold text-purple-400 mb-2">
-                      {edu.degree}
-                    </h4>
-
-                    <p className="text-gray-300 mb-1">
-                      {edu.institution}
+                    {item.title}
+                  </h4>
+                  <p className="text-sm text-gray-300 mb-0.5">{item.institution}</p>
+                  <span className="inline-block text-xs text-purple-300/70 bg-purple-500/10 border border-purple-500/20 rounded-full px-2.5 py-0.5 mb-3">
+                    {item.period}
+                  </span>
+                  {item.description && (
+                    <p
+                      className="text-gray-400 leading-relaxed"
+                      style={{ fontSize: "clamp(0.8rem, 1.3vw, 0.875rem)" }}
+                    >
+                      {item.description}
                     </p>
+                  )}
+                </Card>
+              ))}
+            </motion.div>
 
-                    <p className="text-sm text-gray-500">
-                      {edu.period}
-                    </p>
-
-                    {/* <p className="text-sm text-gray-500">
-                      {edu.description}
-                    </p> */}
-
-                  </div>
-                ))}
-              </motion.div>
-
-              {/* TRAINING */}
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-              >
-                <h3 className="text-xl sm:text-2xl font-bold mb-6 flex items-center gap-2 justify-center md:justify-start">
-                  <GraduationCap className="text-purple-400" />
-                  Training
-                </h3>
-
-                {TRAINING_DATA.map((edu) => (
-                  <div
-                    key={`${edu.degree}-${edu.institution}`}
-                    className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-2xl border border-purple-500/20 mb-4"
-                  >
-                    <h4 className="text-xl font-bold text-purple-400 mb-2">
-                      {edu.title}
-                    </h4>
-
-                    <p className="text-gray-300 mb-1">
-                      {edu.institution}
-                    </p>
-
-                    <p className="text-sm text-gray-500">
-                      {edu.period}
-                    </p>
-
-                    <p className="text-sm  text-gray-400 mt-2">
-                      {edu.description}
-                    </p>
-
-                  </div>
-                ))}
-              </motion.div>
-            </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

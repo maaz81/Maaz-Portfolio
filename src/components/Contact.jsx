@@ -57,181 +57,231 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-16 sm:py-20 px-4">
-      <div className="max-w-7xl mx-auto">
+    <section
+      id="contact"
+      className="relative min-h-screen py-20 lg:py-28 px-5 sm:px-8 lg:px-12"
+    >
+      <div className="max-w-6xl mx-auto">
+
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.7 }}
           viewport={{ once: true }}
+          className="text-center mb-16 lg:mb-20"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
             Get In{" "}
             <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
               Touch
             </span>
           </h2>
 
-          <div className="w-20 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto mb-12"></div>
+          <p className="mt-4 text-gray-400 max-w-2xl mx-auto text-sm sm:text-base lg:text-lg">
+            Have a project in mind, want to collaborate, or simply say hello?
+            Let's build something amazing together.
+          </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {/* Contact Info */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <h3 className="text-2xl sm:text-3xl font-bold mb-6">
-                {CONTACT_DATA.heading}
-              </h3>
+          <div className="w-24 h-[3px] rounded-full bg-gradient-to-r from-purple-500 to-pink-500 mx-auto mt-6" />
+        </motion.div>
 
-              <p className="text-gray-400 text-base sm:text-lg mb-8">
-                {CONTACT_DATA.description}
-              </p>
+        <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-16 items-start">
 
-              <div className="space-y-6">
-                {/* Email */}
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-purple-500/20 rounded-lg">
-                    <Mail className="text-purple-400" size={24} />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-1">Email</h4>
-                    <a
-                      href={`mailto:${CONTACT_DATA.email}`}
-                      className="text-gray-400 hover:text-purple-400 transition-colors"
-                    >
-                      {CONTACT_DATA.email}
-                    </a>
-                  </div>
+          {/* Left Side */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+          >
+            <h3 className="text-2xl lg:text-3xl font-bold mb-4">
+              {CONTACT_DATA.heading}
+            </h3>
+
+            <p className="text-gray-400 leading-relaxed text-base mb-10">
+              {CONTACT_DATA.description}
+            </p>
+
+            <div className="space-y-6">
+
+              <div className="flex items-center gap-4">
+                <div className="p-3 rounded-xl bg-purple-500/10 border border-purple-500/20">
+                  <Mail className="text-purple-400" size={20} />
                 </div>
 
-                {/* Phone */}
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-purple-500/20 rounded-lg">
-                    <Phone className="text-purple-400" size={24} />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-1">Phone</h4>
-                    <a
-                      href={`tel:${CONTACT_DATA.phone}`}
-                      className="text-gray-400 hover:text-purple-400 transition-colors"
-                    >
-                      {CONTACT_DATA.phone}
-                    </a>
-                  </div>
-                </div>
-
-                {/* Location */}
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-purple-500/20 rounded-lg">
-                    <MapPin className="text-purple-400" size={24} />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-1">Location</h4>
-                    <p className="text-gray-400">{CONTACT_DATA.location}</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Social Links */}
-              <div className="mt-8">
-                <h4 className="font-semibold mb-4">Connect with me</h4>
-                <div className="flex gap-4 justify-center md:justify-start">
-                  {Object.entries(CONTACT_DATA.socialLinks).map(
-                    ([key, url]) => {
-                      const Icon = SOCIAL_ICON_MAP[key];
-                      if (!Icon) return null;
-
-                      return (
-                        <a
-                          key={key}
-                          href={url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="p-3 bg-slate-800 rounded-lg hover:bg-purple-600 transition-all duration-300"
-                        >
-                          <Icon size={24} />
-                        </a>
-                      );
-                    }
-                  )}
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Contact Form */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <form
-                onSubmit={handleSubmit}
-                className="bg-slate-800/50 backdrop-blur-sm p-6 sm:p-8 rounded-2xl border border-purple-500/20"
-              >
-                {["name", "email", "subject"].map((field) => (
-                  <div key={field} className="mb-6">
-                    <label
-                      htmlFor={field}
-                      className="block text-sm font-semibold mb-2 capitalize"
-                    >
-                      {field}
-                    </label>
-                    <input
-                      type={field === "email" ? "email" : "text"}
-                      id={field}
-                      value={formData[field]}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg focus:outline-none focus:border-purple-500 transition-colors"
-                    />
-                  </div>
-                ))}
-
-                <div className="mb-6">
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-semibold mb-2"
+                <div>
+                  <p className="text-sm text-gray-500">Email</p>
+                  <a
+                    href={`mailto:${CONTACT_DATA.email}`}
+                    className="hover:text-purple-400 transition-colors"
                   >
-                    Message
+                    {CONTACT_DATA.email}
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4">
+                <div className="p-3 rounded-xl bg-purple-500/10 border border-purple-500/20">
+                  <Phone className="text-purple-400" size={20} />
+                </div>
+
+                <div>
+                  <p className="text-sm text-gray-500">Phone</p>
+                  <a
+                    href={`tel:${CONTACT_DATA.phone}`}
+                    className="hover:text-purple-400 transition-colors"
+                  >
+                    {CONTACT_DATA.phone}
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4">
+                <div className="p-3 rounded-xl bg-purple-500/10 border border-purple-500/20">
+                  <MapPin className="text-purple-400" size={20} />
+                </div>
+
+                <div>
+                  <p className="text-sm text-gray-500">Location</p>
+                  <p>{CONTACT_DATA.location}</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Social */}
+            <div className="mt-10">
+              <h4 className="text-sm uppercase tracking-wider text-gray-500 mb-4">
+                Follow Me
+              </h4>
+
+              <div className="flex gap-4">
+                {Object.entries(CONTACT_DATA.socialLinks).map(([key, url]) => {
+                  const Icon = SOCIAL_ICON_MAP[key];
+                  if (!Icon) return null;
+
+                  return (
+                    <a
+                      key={key}
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group p-3 rounded-xl bg-slate-800 border border-slate-700 hover:border-purple-500 transition-all duration-300"
+                    >
+                      <Icon
+                        size={20}
+                        className="group-hover:text-purple-400 transition-colors"
+                      />
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Right Side Form */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+          >
+            <form
+              onSubmit={handleSubmit}
+              className="relative p-6 sm:p-8 lg:p-10 rounded-3xl bg-slate-800/40 backdrop-blur-xl border border-purple-500/20 shadow-xl"
+            >
+
+              <div className="grid sm:grid-cols-2 gap-5 mb-5">
+
+                <div>
+                  <label className="block mb-2 text-sm text-gray-400">
+                    Name
                   </label>
-                  <textarea
-                    id="message"
-                    rows="5"
-                    value={formData.message}
+
+                  <input
+                    id="name"
+                    type="text"
+                    value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg focus:outline-none focus:border-purple-500 transition-colors resize-none"
+                    className="w-full px-4 py-3 rounded-xl bg-slate-900/50 border border-slate-700 focus:border-purple-500 outline-none transition-all"
                   />
                 </div>
 
-                <button
-                  type="submit"
-                  disabled={status === "sending"}
-                  className="w-full px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 disabled:opacity-50"
-                >
-                  {status === "sending" ? "Sending..." : "Send Message"}
-                </button>
+                <div>
+                  <label className="block mb-2 text-sm text-gray-400">
+                    Email
+                  </label>
 
-                {status === "success" && (
-                  <p className="mt-4 text-green-400 text-center">
-                    Message sent successfully!
-                  </p>
-                )}
+                  <input
+                    id="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 rounded-xl bg-slate-900/50 border border-slate-700 focus:border-purple-500 outline-none transition-all"
+                  />
+                </div>
 
-                {status === "error" && (
-                  <p className="mt-4 text-red-400 text-center">
-                    Failed to send message. Please try again.
-                  </p>
-                )}
-              </form>
-            </motion.div>
-          </div>
-        </motion.div>
+              </div>
+
+              <div className="mb-5">
+                <label className="block mb-2 text-sm text-gray-400">
+                  Subject
+                </label>
+
+                <input
+                  id="subject"
+                  type="text"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 rounded-xl bg-slate-900/50 border border-slate-700 focus:border-purple-500 outline-none transition-all"
+                />
+              </div>
+
+              <div className="mb-6">
+                <label className="block mb-2 text-sm text-gray-400">
+                  Message
+                </label>
+
+                <textarea
+                  id="message"
+                  rows={6}
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 rounded-xl bg-slate-900/50 border border-slate-700 focus:border-purple-500 outline-none transition-all resize-none"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={status === "sending"}
+                className="w-full py-4 rounded-xl font-medium bg-gradient-to-r from-purple-500 to-pink-500 hover:scale-[1.02] transition-all duration-300 disabled:opacity-50"
+              >
+                {status === "sending"
+                  ? "Sending..."
+                  : "Send Message"}
+              </button>
+
+              {status === "success" && (
+                <p className="text-center mt-4 text-green-400">
+                  Message sent successfully.
+                </p>
+              )}
+
+              {status === "error" && (
+                <p className="text-center mt-4 text-red-400">
+                  Something went wrong. Please try again.
+                </p>
+              )}
+            </form>
+          </motion.div>
+        </div>
       </div>
     </section>
+
+
   );
 }
