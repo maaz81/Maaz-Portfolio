@@ -44,7 +44,7 @@ export const ABOUT_DATA = {
     ],
 
     stats: [
-        { value: "10 Months", label: "Experience", color: "purple" },
+        { value: "1 year", label: "Experience", color: "purple" },
         { value: "3", label: "Production projects", color: "green" },
         { value: "1st place", label: "College project competition", color: "amber" },
     ],
