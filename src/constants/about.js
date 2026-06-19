@@ -56,6 +56,6 @@ export const ABOUT_DATA = {
         { icon: "experience", label: "10 Months Experience" },
     ],
 
-    resumeLink: "/resume.pdf",
+    resumeLink: "/maaz-resume.pdf",
     profileImage: "/Maaz_profile.jpg",
 };
