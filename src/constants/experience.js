@@ -11,6 +11,10 @@ export const EXPERIENCE_DATA = [
             "Built a partner session system using Redis (24-hour TTL) with database fallback for cache failure resilience.",
             "Secured backend systems with JWT, RBAC, and 2FA (TOTP) for super-admin accounts protecting sensitive financial records.",
         ],
+        credentials: [
+            { label: "Recommendation Letter", url: "https://drive.google.com/file/d/1en4FAMzmtvmSoRbfXmMe0UIIM5p50O9B/view?usp=sharing" },
+            { label: "Experience Letter", url: "https://drive.google.com/file/d/1mjYvFDrmor9EC3b38Qsg1d8PQ1r0lEAF/view?usp=sharing" }
+        ]
     },
     {
         role: "Frontend Developer Intern",
@@ -23,6 +27,10 @@ export const EXPERIENCE_DATA = [
             "Managed application state using Redux Toolkit and handled frontend-backend error scenarios.",
             "Collaborated with designers using Figma and followed Git/GitHub workflows for PRs and team-based development.",
         ],
+        credentials: [
+            { label: "Experience Letter", url: "https://drive.google.com/file/d/1gEmU1qBfxXFzokNGs85RVnDPz2CH9rvY/view?usp=sharing" },
+            { label: "Internship Certificate", url: "https://drive.google.com/file/d/1CFcw-hQ_knKMq_jRtvJpUaLNrt5cE-1-/view?usp=sharing" }
+        ]
     },
 ];
 
@@ -48,5 +56,9 @@ export const TRAINING_DATA = [
         period: "Aug 2022 · 6 Weeks",
         description:
             "Completed 6 weeks training in web development where I learned basics of HTML, CSS and JavaScript. Worked on a project 'InveSmart Capital Services' and understood how to build web pages using layouts, colors, responsive design, Flexbox and Grid. Also got basic idea of SEO and how real projects are developed and tested.",
+        credentials: [
+            { label: "Training Certificate", url: "https://drive.google.com/file/d/1fQZaeStXJWRNDL7NJug1ae9BqmDtP9_o/view?usp=sharing" },
+            { label: "Confirmation Letter", url: "https://drive.google.com/file/d/1Vv3xpwHhXP8ukPojeN4arUXUzSqhOVSi/view?usp=sharing" }
+        ]
     }
 ];

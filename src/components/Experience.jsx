@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Briefcase, GraduationCap, BookOpen } from "lucide-react";
+import { Briefcase, GraduationCap, BookOpen, ExternalLink } from "lucide-react";
 import {
   EXPERIENCE_DATA,
   EDUCATION_DATA,
@@ -99,6 +99,24 @@ export default function Experience() {
                     </li>
                   ))}
                 </ul>
+
+                {/* Credentials */}
+                {exp.credentials && exp.credentials.length > 0 && (
+                  <div className="mt-4 pt-3 border-t border-slate-700/40 flex flex-wrap gap-2">
+                    {exp.credentials.map((cred) => (
+                      <a
+                        key={cred.label}
+                        href={cred.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs text-purple-300 bg-purple-500/10 border border-purple-500/20 hover:bg-purple-500/20 hover:border-purple-400/40 rounded-lg px-2.5 py-1 transition-all duration-200 cursor-pointer"
+                      >
+                        <ExternalLink size={12} className="text-purple-400" />
+                        <span>{cred.label}</span>
+                      </a>
+                    ))}
+                  </div>
+                )}
               </Card>
             ))}
           </motion.div>
@@ -157,6 +175,24 @@ export default function Experience() {
                     >
                       {item.description}
                     </p>
+                  )}
+
+                  {/* Credentials */}
+                  {item.credentials && item.credentials.length > 0 && (
+                    <div className="mt-4 pt-3 border-t border-slate-700/40 flex flex-wrap gap-2">
+                      {item.credentials.map((cred) => (
+                        <a
+                          key={cred.label}
+                          href={cred.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-xs text-purple-300 bg-purple-500/10 border border-purple-500/20 hover:bg-purple-500/20 hover:border-purple-400/40 rounded-lg px-2.5 py-1 transition-all duration-200 cursor-pointer"
+                        >
+                          <ExternalLink size={12} className="text-purple-400" />
+                          <span>{cred.label}</span>
+                        </a>
+                      ))}
+                    </div>
                   )}
                 </Card>
               ))}

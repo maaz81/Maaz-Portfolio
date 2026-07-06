@@ -145,8 +145,9 @@ export default function About() {
             <div className="flex justify-center md:justify-start">
               <a
                 href={ABOUT_DATA.resumeLink}
-                download
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/40 active:scale-95"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/40 active:scale-95 cursor-pointer"
                 style={{ background: 'linear-gradient(135deg, #9333ea, #ec4899)' }}
               >
                 <Download size={16} />
