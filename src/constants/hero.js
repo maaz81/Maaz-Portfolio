@@ -4,7 +4,7 @@ export const HERO_DATA = {
     role: "Full Stack Web Developer",
 
     description:
-        "MERN Stack Developer passionate about building responsive UIs and scalable backends. Specializing in React.js, Node.js, and creating SEO-friendly web solutions.",
+        "Full Stack Developer specializing in building scalable REST APIs, optimizing database performance, and crafting secure engineering workflows using Node.js and React",
 
     profileImage: "/Maaz_profile.jpg",
 

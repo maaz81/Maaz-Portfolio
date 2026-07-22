@@ -1,5 +1,44 @@
 export const PROJECTS = [
     {
+        title: "Thoughtly - AI Thought Sharing Webapp",
+        year: "2025",
+        category: "Full Stack",
+        image: '/projects/Ai-thought.png',
+        description: "An AI-powered web platform for users to share, filter, and explore thoughts with integrated AI suggestions.",
+        longDescription:
+            "AI – Thought Sharing is a full-stack AI-native social publishing platform that enables users to co-author content with AI, discover personalized feeds through an interest-graph recommendation engine, and interact in real-time. The system combines intelligent content generation, scalable backend architecture, and real-time communication to create a modern knowledge-sharing ecosystem.",
+        problem:
+            "Modern content platforms lack intelligent assistance and personalized discovery. Users struggle with content creation, idea structuring, and finding relevant discussions in large-scale social environments.",
+        solution:
+            "Built an AI-powered co-authoring system using OpenAI for title generation, rewriting, and auto-tagging, combined with a weighted interest-graph recommendation engine and real-time WebSocket notifications to deliver intelligent and engaging content experiences.",
+        impact:
+            "Reduced content creation time by approximately 40%, achieved sub-100ms real-time updates using Socket.io, and designed scalable feed retrieval logic optimized for high-volume personalized content delivery.",
+        features: [
+            "AI Smart Co-Authoring (title generation, rewriting, auto-tagging)",
+            "Interest Graph Recommendation Engine using weighted engagement signals",
+            "Real-time notifications and live interactions via Socket.io",
+            "Secure JWT-based authentication with protected routes",
+            "Optimized MongoDB aggregation pipelines for feed ranking",
+            "Human-in-the-loop AI suggestion system with optimistic UI updates"
+        ],
+        tech: [
+            "React (Vite)",
+            "Node.js",
+            "Express.js",
+            "MongoDB",
+            "OpenAI API",
+            "Socket.io",
+            "JWT Authentication",
+            "Tailwind CSS"
+        ],
+        architecture:
+            "Designed with a modular MVC backend architecture using Express.js and MongoDB. REST APIs handle core business logic, while a WebSocket layer (Socket.io) enables real-time communication. The frontend is built with React (Vite) using component-driven architecture and optimized state management for performance and scalability.",
+        github: "https://github.com/maaz81/AI-Thought-Sharing-Webapp",
+        demo: "https://thoughtly.vercel.app/",
+        featured: true
+    },
+
+    {
         title: "Career AI – Resume Intelligence Platform",
         year: "2025",
         category: "Full Stack",
@@ -39,44 +78,6 @@ export const PROJECTS = [
             "Designed as a modular full-stack system with a React + Redux frontend and a RESTful Node.js/Express backend. PostgreSQL with Prisma ORM manages relational resume and user data, while Redis provides a high-speed caching layer. A separate Python NLP service handles resume parsing, skill extraction, and semantic similarity scoring, enabling scalable and maintainable AI processing.",
         github: "https://github.com/maaz81/Resume-Analytics-and-Career-Recommender",
         demo: "https://career-ai-resume-analysis.vercel.app/",
-        featured: true
-    },
-    {
-        title: "Thoughtly - AI Thought Sharing Webapp",
-        year: "2025",
-        category: "Full Stack",
-        image: '/projects/Ai-thought.png',
-        description: "An AI-powered web platform for users to share, filter, and explore thoughts with integrated AI suggestions.",
-        longDescription:
-            "AI – Thought Sharing is a full-stack AI-native social publishing platform that enables users to co-author content with AI, discover personalized feeds through an interest-graph recommendation engine, and interact in real-time. The system combines intelligent content generation, scalable backend architecture, and real-time communication to create a modern knowledge-sharing ecosystem.",
-        problem:
-            "Modern content platforms lack intelligent assistance and personalized discovery. Users struggle with content creation, idea structuring, and finding relevant discussions in large-scale social environments.",
-        solution:
-            "Built an AI-powered co-authoring system using OpenAI for title generation, rewriting, and auto-tagging, combined with a weighted interest-graph recommendation engine and real-time WebSocket notifications to deliver intelligent and engaging content experiences.",
-        impact:
-            "Reduced content creation time by approximately 40%, achieved sub-100ms real-time updates using Socket.io, and designed scalable feed retrieval logic optimized for high-volume personalized content delivery.",
-        features: [
-            "AI Smart Co-Authoring (title generation, rewriting, auto-tagging)",
-            "Interest Graph Recommendation Engine using weighted engagement signals",
-            "Real-time notifications and live interactions via Socket.io",
-            "Secure JWT-based authentication with protected routes",
-            "Optimized MongoDB aggregation pipelines for feed ranking",
-            "Human-in-the-loop AI suggestion system with optimistic UI updates"
-        ],
-        tech: [
-            "React (Vite)",
-            "Node.js",
-            "Express.js",
-            "MongoDB",
-            "OpenAI API",
-            "Socket.io",
-            "JWT Authentication",
-            "Tailwind CSS"
-        ],
-        architecture:
-            "Designed with a modular MVC backend architecture using Express.js and MongoDB. REST APIs handle core business logic, while a WebSocket layer (Socket.io) enables real-time communication. The frontend is built with React (Vite) using component-driven architecture and optimized state management for performance and scalability.",
-        github: "https://github.com/maaz81/AI-Thought-Sharing-Webapp",
-        demo: "https://thoughtly.vercel.app/",
         featured: true
     },
     {

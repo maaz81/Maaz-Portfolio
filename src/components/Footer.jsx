@@ -27,8 +27,7 @@ export default function Footer() {
             </h3>
 
             <p className="text-gray-400 text-sm mt-2 max-w-md">
-              Crafting modern web experiences with React, Tailwind CSS,
-              Framer Motion and scalable frontend architecture.
+              Building high-performance backend architectures and scalable full-stack web applications.
             </p>
           </div>
 
