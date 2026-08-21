@@ -1,163 +1,538 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Download, MapPin, Mail, GraduationCap, Briefcase, Star } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import {
+  ArrowUpRight,
+  BriefcaseBusiness,
+  Check,
+  Download,
+  GraduationCap,
+  Layers3,
+  Mail,
+  MapPin,
+  Rocket,
+  Sparkles,
+} from "lucide-react";
+
 import { ABOUT_DATA } from "../constants";
 
+const GREEN = "#01c16a";
+
+const reveal = (direction = "up", delay = 0) => {
+  const axis =
+    direction === "left"
+      ? { x: -35 }
+      : direction === "right"
+        ? { x: 35 }
+        : { y: 30 };
+
+  return {
+    initial: {
+      opacity: 0,
+      ...axis,
+    },
+    whileInView: {
+      opacity: 1,
+      x: 0,
+      y: 0,
+    },
+    viewport: {
+      once: true,
+      amount: 0.15,
+    },
+    transition: {
+      duration: 0.75,
+      delay,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  };
+};
+
 const DETAIL_ICONS = {
-  location: <MapPin className="text-purple-400 flex-shrink-0" size={15} />,
-  availability: <Mail className="text-purple-400 flex-shrink-0" size={15} />,
-  education: <GraduationCap className="text-purple-400 flex-shrink-0" size={15} />,
-  experience: <Briefcase className="text-purple-400 flex-shrink-0" size={15} />,
+  location: MapPin,
+  availability: Mail,
+  education: GraduationCap,
+  experience: BriefcaseBusiness,
 };
 
-const STAT_STYLES = {
-  purple: {
-    wrapper: "bg-purple-500/10 border-purple-500/20",
-    value: "text-purple-400",
-    icon: <Briefcase size={16} className="text-purple-400" />,
-  },
-  green: {
-    wrapper: "bg-emerald-500/10 border-emerald-500/20",
-    value: "text-emerald-400",
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-        stroke="currentColor" strokeWidth="2" className="text-emerald-400">
-        <polyline points="16 18 22 12 16 6" />
-        <polyline points="8 6 2 12 8 18" />
-      </svg>
-    ),
-  },
-  amber: {
-    wrapper: "bg-amber-500/10 border-amber-500/20",
-    value: "text-amber-400",
-    icon: <Star size={16} className="text-amber-400" />,
-  },
-};
-
-const fadeIn = (axis = 'y', dir = 40, delay = 0) => ({
-  initial: { opacity: 0, [axis]: dir },
-  whileInView: { opacity: 1, [axis]: 0 },
-  transition: { duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] },
-  viewport: { once: true },
-});
-
-export default function About() {
+const About = () => {
   return (
-    <section id="about" className="py-16 sm:py-20 px-5 sm:px-8 lg:px-12">
-      <div className="max-w-6xl mx-auto">
+    <section
+      id="about"
+      className="relative overflow-hidden bg-[#111827] px-6 py-24 text-white sm:px-8 lg:px-12 lg:py-32"
+    >
+      {/* =====================================================
+          BACKGROUND
+      ===================================================== */}
 
-        {/* ── Section header ── */}
-        <motion.div className="text-center mb-12" {...fadeIn('y', 32)}>
-          <h2
-            className="font-extrabold tracking-tight mb-3"
-            style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)' }}
-          >
-            About{' '}
-            <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+      <div className="pointer-events-none absolute inset-0">
+        {/* Main green glow */}
+        <div
+          className="absolute -left-56 top-20 h-[600px] w-[600px] rounded-full blur-[140px]"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(1,193,106,0.12) 0%, rgba(1,193,106,0.035) 42%, transparent 70%)",
+          }}
+        />
+
+        {/* Bottom green glow */}
+        <div
+          className="absolute -bottom-64 -right-48 h-[600px] w-[600px] rounded-full blur-[140px]"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(1,193,106,0.08) 0%, transparent 70%)",
+          }}
+        />
+      </div>
+
+      {/* Engineering grid */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-[0.035]"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px)
+          `,
+          backgroundSize: "64px 64px",
+          maskImage:
+            "radial-gradient(circle at center, black 0%, transparent 78%)",
+          WebkitMaskImage:
+            "radial-gradient(circle at center, black 0%, transparent 78%)",
+        }}
+      />
+
+      {/* Top accent */}
+      <div
+        className="pointer-events-none absolute left-0 right-0 top-0 h-px"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, rgba(1,193,106,0.45), transparent)",
+        }}
+      />
+
+      {/* =====================================================
+          CONTAINER
+      ===================================================== */}
+
+      <div className="relative z-10 mx-auto max-w-7xl">
+        {/* =====================================================
+            HEADER
+        ===================================================== */}
+
+        <motion.div
+          {...reveal("up", 0)}
+          className="mb-16 flex flex-col items-center text-center"
+        >
+          <div className="mb-5 flex items-center gap-3">
+            <span className="h-px w-10 bg-gradient-to-r from-transparent to-[#01c16a]/70" />
+
+            <span
+              className="text-[10px] font-bold uppercase tracking-[0.32em]"
+              style={{ color: "#5ee6a2" }}
+            >
+              Get to know me
+            </span>
+
+            <span className="h-px w-10 bg-gradient-to-l from-transparent to-[#01c16a]/70" />
+          </div>
+
+          <h2 className="text-[clamp(2.4rem,5vw,4rem)] font-bold leading-none tracking-[-0.055em]">
+            About{" "}
+            <span
+              className="bg-clip-text text-transparent"
+              style={{
+                backgroundImage:
+                  "linear-gradient(90deg, #ffffff 0%, #01c16a 100%)",
+              }}
+            >
               Me
             </span>
           </h2>
-          <div className="w-14 h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full" />
+
+          <p className="mt-5 max-w-xl text-sm leading-7 text-white/40 sm:text-[15px]">
+            A little about my background, engineering mindset, and the
+            systems I enjoy building.
+          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14 items-start">
+        {/* =====================================================
+            MAIN GRID
+        ===================================================== */}
 
-          {/* ── LEFT: cards ── */}
-          <motion.div
-            className="flex flex-col gap-4"
-            {...fadeIn('x', -36, 0.1)}
-          >
-            {/* What I Build */}
-            <div className="bg-slate-800/50 backdrop-blur-sm p-5 rounded-2xl border border-purple-500/20">
-              <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-3">
-                What I build
-              </p>
-              <ul className="space-y-2.5">
-                {ABOUT_DATA.whatIBuild.map((item) => (
-                  <li key={item} className="flex items-center gap-2.5 text-sm text-gray-300">
-                    <span className="w-1.5 h-1.5 rounded-full bg-purple-400 flex-shrink-0" />
-                    {item}
-                  </li>
+        <div className="grid items-start gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:gap-10">
+          {/* ===================================================
+              LEFT — ENGINEERING CARD
+          =================================================== */}
+
+          <motion.div {...reveal("left", 0.1)}>
+            <div className="group relative overflow-hidden rounded-[2rem] border border-white/[0.08] bg-white/[0.025] p-6 shadow-2xl backdrop-blur-xl sm:p-7">
+              {/* Top accent */}
+              <div
+                className="absolute left-0 right-0 top-0 h-px"
+                style={{
+                  background:
+                    "linear-gradient(90deg, transparent, rgba(1,193,106,0.7), transparent)",
+                }}
+              />
+
+              {/* Corner glow */}
+              <div
+                className="absolute -right-24 -top-24 h-52 w-52 rounded-full blur-3xl transition-all duration-700 group-hover:opacity-100"
+                style={{
+                  background: "rgba(1,193,106,0.07)",
+                }}
+              />
+
+              {/* Header */}
+              <div className="relative mb-7 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div
+                    className="flex h-11 w-11 items-center justify-center rounded-2xl border"
+                    style={{
+                      borderColor: "rgba(1,193,106,0.18)",
+                      background: "rgba(1,193,106,0.07)",
+                    }}
+                  >
+                    <Layers3
+                      size={19}
+                      style={{ color: GREEN }}
+                    />
+                  </div>
+
+                  <div>
+                    <p className="text-sm font-semibold text-white/85">
+                      What I Build
+                    </p>
+
+                    <p className="mt-1 text-[9px] uppercase tracking-[0.22em] text-white/25">
+                      Engineering Focus
+                    </p>
+                  </div>
+                </div>
+
+                <Sparkles
+                  size={17}
+                  className="text-[#01c16a]/60"
+                />
+              </div>
+
+              {/* Build list */}
+              <div className="relative space-y-2">
+                {ABOUT_DATA.whatIBuild.map((item, index) => (
+                  <motion.div
+                    key={item}
+                    initial={{
+                      opacity: 0,
+                      x: -15,
+                    }}
+                    whileInView={{
+                      opacity: 1,
+                      x: 0,
+                    }}
+                    viewport={{
+                      once: true,
+                    }}
+                    transition={{
+                      duration: 0.45,
+                      delay: 0.15 + index * 0.07,
+                    }}
+                    className="group/item flex items-start gap-3 rounded-xl px-2 py-3 transition-all duration-300 hover:bg-white/[0.025]"
+                  >
+                    <div
+                      className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border"
+                      style={{
+                        borderColor: "rgba(1,193,106,0.18)",
+                        background: "rgba(1,193,106,0.06)",
+                      }}
+                    >
+                      <Check
+                        size={11}
+                        style={{ color: GREEN }}
+                      />
+                    </div>
+
+                    <span className="text-sm leading-6 text-white/45 transition-colors duration-300 group-hover/item:text-white/75">
+                      {item}
+                    </span>
+                  </motion.div>
                 ))}
-              </ul>
+              </div>
+
+              {/* Bottom line */}
+              <div className="mt-7 flex items-center gap-3 border-t border-white/[0.06] pt-5">
+                <div
+                  className="h-1.5 w-1.5 rounded-full"
+                  style={{
+                    backgroundColor: GREEN,
+                    boxShadow: `0 0 10px ${GREEN}`,
+                  }}
+                />
+
+                <span className="text-[10px] uppercase tracking-[0.2em] text-white/25">
+                  Backend • APIs • Databases • Performance
+                </span>
+              </div>
             </div>
 
-            {/* Stat cards */}
-            <div className="grid grid-cols-2 gap-3">
-              {ABOUT_DATA.stats.map((stat, i) => {
-                const style = STAT_STYLES[stat.color] || STAT_STYLES.purple;
-                const isLast = i === ABOUT_DATA.stats.length - 1;
+            {/* =================================================
+                STATS
+            ================================================= */}
+
+            <div className="mt-4 grid grid-cols-2 gap-3">
+              {ABOUT_DATA.stats.map((stat, index) => {
+                const icons = [
+                  BriefcaseBusiness,
+                  Rocket,
+                  GraduationCap,
+                  Sparkles,
+                ];
+
+                const Icon = icons[index % icons.length];
+
+                const isLast =
+                  index === ABOUT_DATA.stats.length - 1;
+
                 return (
-                  <div
+                  <motion.div
                     key={stat.label}
+                    {...reveal("up", 0.18 + index * 0.08)}
+                    whileHover={{
+                      y: -5,
+                    }}
                     className={[
-                      'bg-slate-800/50 backdrop-blur-sm p-4 rounded-2xl border flex flex-col gap-1.5',
-                      style.wrapper,
-                      isLast && ABOUT_DATA.stats.length % 2 !== 0 ? 'col-span-2' : '',
-                    ].join(' ')}
+                      "group relative overflow-hidden rounded-2xl border",
+                      "bg-gradient-to-br from-[#01c16a]/[0.08] via-[#01c16a]/[0.02] to-transparent",
+                      "p-5 backdrop-blur-xl",
+                      isLast &&
+                        ABOUT_DATA.stats.length % 2 !== 0
+                        ? "col-span-2"
+                        : "",
+                    ].join(" ")}
+                    style={{
+                      borderColor: "rgba(1,193,106,0.12)",
+                    }}
                   >
-                    <div className={style.value}>{style.icon}</div>
-                    <p className={`text-xl font-bold ${style.value}`}>{stat.value}</p>
-                    <p className="text-xs text-gray-400 leading-tight">{stat.label}</p>
-                  </div>
+                    <div className="absolute -right-10 -top-10 h-24 w-24 rounded-full bg-[#01c16a]/[0.04] blur-2xl transition-all duration-500 group-hover:bg-[#01c16a]/[0.08]" />
+
+                    <div className="relative">
+                      <Icon
+                        size={17}
+                        style={{ color: GREEN }}
+                        className="opacity-80"
+                      />
+
+                      <p
+                        className="mt-5 text-2xl font-bold tracking-[-0.04em]"
+                        style={{ color: "#5ee6a2" }}
+                      >
+                        {stat.value}
+                      </p>
+
+                      <p className="mt-1 text-[11px] leading-5 text-white/30">
+                        {stat.label}
+                      </p>
+                    </div>
+                  </motion.div>
                 );
               })}
             </div>
           </motion.div>
 
-          {/* ── RIGHT: bio ── */}
-          <motion.div
-            className="flex flex-col text-center md:text-left"
-            {...fadeIn('x', 36, 0.15)}
-          >
-            {/* Role badge */}
-            <span className="inline-block self-center md:self-start text-xs font-semibold px-3 py-1 rounded-full bg-purple-500/15 text-purple-300 border border-purple-500/30 mb-4">
-              {ABOUT_DATA.role}
-            </span>
+          {/* ===================================================
+              RIGHT — STORY
+          =================================================== */}
 
-            <h3
-              className="font-semibold text-white leading-snug mb-4"
-              style={{ fontSize: 'clamp(1rem, 2vw, 1.3rem)' }}
+          <motion.div {...reveal("right", 0.15)}>
+            {/* Role */}
+            <div
+              className="mb-6 inline-flex items-center gap-2 rounded-full border px-3.5 py-2"
+              style={{
+                borderColor: "rgba(1,193,106,0.18)",
+                background: "rgba(1,193,106,0.06)",
+              }}
             >
+              <span
+                className="h-1.5 w-1.5 rounded-full"
+                style={{
+                  backgroundColor: GREEN,
+                  boxShadow: `0 0 10px ${GREEN}`,
+                }}
+              />
+
+              <span
+                className="text-[10px] font-semibold tracking-wide"
+                style={{ color: "#8df0bb" }}
+              >
+                {ABOUT_DATA.role}
+              </span>
+            </div>
+
+            {/* Main tagline */}
+            <h3 className="max-w-3xl text-[clamp(1.7rem,3vw,2.5rem)] font-semibold leading-[1.15] tracking-[-0.04em]">
               {ABOUT_DATA.tagline}
+              <span style={{ color: GREEN }}>.</span>
             </h3>
 
-            {ABOUT_DATA.description.map((para, i) => (
-              <p
-                key={i}
-                className="text-gray-400 leading-relaxed mb-3"
-                style={{ fontSize: 'clamp(0.85rem, 1.4vw, 0.975rem)' }}
-              >
-                {para}
-              </p>
-            ))}
+            {/* Accent */}
+            <div className="my-7 flex items-center gap-2">
+              <div
+                className="h-[2px] w-12 rounded-full"
+                style={{
+                  background:
+                    "linear-gradient(90deg, #01c16a, rgba(1,193,106,0.15))",
+                }}
+              />
 
-            {/* Details grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mt-5 mb-7 text-left">
-              {ABOUT_DATA.details.map((detail) => (
-                <div key={detail.label} className="flex items-center gap-2">
-                  {DETAIL_ICONS[detail.icon]}
-                  <span className="text-gray-300 text-sm truncate">{detail.label}</span>
-                </div>
+              <div
+                className="h-[2px] w-2 rounded-full"
+                style={{ backgroundColor: GREEN }}
+              />
+            </div>
+
+            {/* Description */}
+            <div className="max-w-3xl space-y-5">
+              {ABOUT_DATA.description.map((paragraph, index) => (
+                <motion.p
+                  key={index}
+                  {...reveal("up", 0.22 + index * 0.08)}
+                  className="text-sm leading-7 text-white/42 sm:text-[15px] sm:leading-8"
+                >
+                  {paragraph}
+                </motion.p>
               ))}
             </div>
 
-            <div className="flex justify-center md:justify-start">
-              <a
-                href={ABOUT_DATA.resumeLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/40 active:scale-95 cursor-pointer"
-                style={{ background: 'linear-gradient(135deg, #9333ea, #ec4899)' }}
-              >
-                <Download size={16} />
-                Download Resume
-              </a>
-            </div>
-          </motion.div>
+            {/* Details */}
+            <div className="my-9 grid grid-cols-1 gap-x-8 gap-y-3 border-y border-white/[0.06] py-6 sm:grid-cols-2">
+              {ABOUT_DATA.details.map((detail, index) => {
+                const Icon =
+                  DETAIL_ICONS[detail.icon] || MapPin;
 
+                return (
+                  <motion.div
+                    key={detail.label}
+                    initial={{
+                      opacity: 0,
+                      y: 10,
+                    }}
+                    whileInView={{
+                      opacity: 1,
+                      y: 0,
+                    }}
+                    viewport={{
+                      once: true,
+                    }}
+                    transition={{
+                      duration: 0.4,
+                      delay: 0.25 + index * 0.06,
+                    }}
+                    className="group flex items-center gap-3 rounded-xl py-2"
+                  >
+                    <div
+                      className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl border transition-all duration-300"
+                      style={{
+                        borderColor: "rgba(255,255,255,0.07)",
+                        background: "rgba(255,255,255,0.025)",
+                      }}
+                    >
+                      <Icon
+                        size={15}
+                        className="text-white/30 transition-colors duration-300 group-hover:text-[#01c16a]"
+                      />
+                    </div>
+
+                    <span className="text-xs font-medium text-white/40 transition-colors duration-300 group-hover:text-white/70">
+                      {detail.label}
+                    </span>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {/* Resume */}
+            <motion.a
+              href={ABOUT_DATA.resumeLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{
+                y: -3,
+                scale: 1.01,
+              }}
+              whileTap={{
+                scale: 0.98,
+              }}
+              className="group inline-flex items-center gap-3 rounded-xl px-5 py-3.5 text-sm font-semibold text-[#06150e]"
+              style={{
+                backgroundColor: GREEN,
+                boxShadow: "0 15px 40px rgba(1,193,106,0.15)",
+              }}
+            >
+              <Download
+                size={16}
+                className="transition-transform duration-300 group-hover:-translate-y-0.5"
+              />
+
+              Download Resume
+
+              <ArrowUpRight
+                size={15}
+                className="opacity-60 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              />
+            </motion.a>
+          </motion.div>
         </div>
+
+        {/* =====================================================
+            BOTTOM IDENTITY STRIP
+        ===================================================== */}
+
+        <motion.div
+          {...reveal("up", 0.35)}
+          className="mt-16 flex flex-col items-center justify-between gap-5 rounded-2xl border border-white/[0.06] bg-white/[0.018] px-6 py-5 backdrop-blur-xl sm:flex-row"
+        >
+          <div className="flex items-center gap-3">
+            <div
+              className="flex h-9 w-9 items-center justify-center rounded-xl border"
+              style={{
+                borderColor: "rgba(1,193,106,0.14)",
+                background: "rgba(1,193,106,0.05)",
+              }}
+            >
+              <BriefcaseBusiness
+                size={15}
+                style={{ color: GREEN }}
+              />
+            </div>
+
+            <div>
+              <p className="text-xs font-semibold text-white/65">
+                Backend-focused Full Stack Developer
+              </p>
+
+              <p className="mt-0.5 text-[10px] text-white/25">
+                Building reliable systems, one API at a time.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-white/25">
+            <span
+              className="h-1.5 w-1.5 rounded-full"
+              style={{
+                backgroundColor: GREEN,
+                boxShadow: `0 0 8px ${GREEN}`,
+              }}
+            />
+            Open to opportunities
+          </div>
+        </motion.div>
       </div>
+
+      {/* Bottom fade */}
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#111827] to-transparent" />
     </section>
   );
-}
+};
+
+export default About;
+
