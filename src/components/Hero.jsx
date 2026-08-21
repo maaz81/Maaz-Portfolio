@@ -12,6 +12,8 @@ import {
   Sparkles,
 } from "lucide-react";
 import { HERO_DATA } from "../constants";
+import { ABOUT_DATA } from "../constants/about"
+
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -294,10 +296,11 @@ export default function Hero() {
 
               {/* Secondary CTA */}
               <a
-                href="#contact"
+                href={ABOUT_DATA.resumeLink}
                 className="group inline-flex items-center gap-2 rounded-xl border border-white/[0.1] bg-white/[0.025] px-6 py-3.5 text-sm font-semibold text-slate-300 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-[#01c16a]/30 hover:bg-[#01c16a]/[0.05] hover:text-white active:translate-y-0"
               >
-                Let's Connect
+
+                Download Resume
 
                 <ArrowUpRight
                   size={16}

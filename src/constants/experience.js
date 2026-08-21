@@ -3,7 +3,7 @@ export const EXPERIENCE_DATA = [
         role: "Full Stack Developer",
         company: "CarriBiz Global Logistics Pvt. Ltd",
         location: "Remote",
-        period: "Aug 2025 – May 2026",
+        period: "Aug 2025 – June 2026",
         highlights: [
             "Built scalable REST APIs using Node.js and Express for transactions, partner management, and service configuration.",
             "Designed PostgreSQL schemas with Prisma ORM and reduced API response time by 25–30% through query optimization and Redis caching.",

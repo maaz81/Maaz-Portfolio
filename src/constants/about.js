@@ -9,7 +9,7 @@ export const ABOUT_DATA = {
 
         "At CarriBiz Global Logistics, I engineered financial processing workflows, built Redis-powered session systems, and secured backend systems with JWT, RBAC, and 2FA — reducing API response time by 25–30%.",
 
-        "Currently pursuing my B.E. in Computer Science Engineering at Sant Gadge Baba Amravati University, I'm actively looking for Backend or SDE roles where I can contribute and grow.",
+        "I have completed my B.E. in Computer Science Engineering at Sant Gadge Baba Amravati University, and I'm actively looking for Backend or SDE roles where I can contribute and grow.",
     ],
 
     whatIBuild: [

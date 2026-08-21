@@ -395,7 +395,7 @@ const About = () => {
                 <motion.p
                   key={index}
                   {...reveal("up", 0.22 + index * 0.08)}
-                  className="text-sm leading-7 text-white/42 sm:text-[15px] sm:leading-8"
+                  className="text-sm tracking-widest leading-7 text-white/30 sm:text-[15px] sm:leading-8"
                 >
                   {paragraph}
                 </motion.p>
@@ -441,7 +441,7 @@ const About = () => {
                       />
                     </div>
 
-                    <span className="text-xs font-medium text-white/40 transition-colors duration-300 group-hover:text-white/70">
+                    <span className="text-sm font-medium text-white/40 transition-colors duration-300 group-hover:text-white/70">
                       {detail.label}
                     </span>
                   </motion.div>

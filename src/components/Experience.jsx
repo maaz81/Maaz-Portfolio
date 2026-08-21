@@ -307,7 +307,7 @@ const Experience = () => {
                                 }}
                               />
 
-                              <span className="text-xs leading-5 text-white/38 transition-colors duration-300 group-hover/item:text-white/65">
+                              <span className="text-sm leading-5 tracking-widest text-white/35 transition-colors duration-300 group-hover/item:text-white/65">
                                 {item}
                               </span>
                             </motion.div>
