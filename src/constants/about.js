@@ -1,26 +1,3 @@
-// export const ABOUT_DATA = {
-//     role: "Backend-focused Full Stack Developer",
-
-//     description: [
-//         "I'm a Full Stack Developer with hands-on experience building scalable REST APIs, authentication systems, and database-driven applications using Node.js, Express, PostgreSQL, MongoDB, and Redis.",
-
-//         "I've built production-grade systems at CarriBiz Global Logistics, where I engineered financial processing workflows, implemented Redis caching that reduced API response time by 25–30 %, and secured backend systems with JWT, RBAC, and 2FA.I also completed a frontend internship at Manparth, contributing to MERN stack features and API integrations.",
-
-//         "I'm passionate about system design, performance optimization, and writing clean, maintainable code.Currently pursuing my Bachelor's in Computer Science Engineering at Sant Gadge Baba Amravati University, I'm actively looking for Backend or SDE roles where I can contribute and grow."
-//     ],
-
-//     details: [
-//         { icon: "location", label: "Achalpur, India" },
-//         { icon: "availability", label: "Available for work" },
-//         { icon: "education", label: "Bachelor's Pursuing" },
-//         { icon: "experience", label: "1+ Year Experience" }
-//     ],
-
-//     resumeLink: "/resume.pdf",
-//     profileImage: "/Maaz_profile.jpg"
-// };
-
-
 export const ABOUT_DATA = {
     role: "Backend-focused Full Stack Developer",
 
@@ -53,7 +30,7 @@ export const ABOUT_DATA = {
         { icon: "location", label: "Amravati, India" },
         { icon: "availability", label: "Available for work" },
         { icon: "education", label: "B.E. Graduated" },
-        { icon: "experience", label: "10 Months Experience" },
+        { icon: "experience", label: "1 Year Experience" },
     ],
 
     resumeLink: "https://drive.google.com/file/d/1jBr5OYbbTY_Q3uMi6jWrJbcmWl12lRCU/view?usp=sharing",

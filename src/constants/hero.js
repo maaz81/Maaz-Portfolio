@@ -1,7 +1,7 @@
 export const HERO_DATA = {
     greeting: "Hello, I'm",
     name: "Maaz Ahmad Khan",
-    role: "Full Stack Web Developer",
+    role: "Full Stack Developer",
 
     description:
         "Full Stack Developer specializing in building scalable REST APIs, optimizing database performance, and crafting secure engineering workflows using Node.js and React",

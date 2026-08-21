@@ -118,8 +118,7 @@ const Experience = () => {
           </h2>
 
           <p className="mt-4 max-w-2xl text-sm leading-7 text-white/35 sm:text-[15px]">
-            A timeline of the teams, products, and engineering challenges
-            that have shaped the way I build software.
+            A timeline of the experience I have gained.
           </p>
         </motion.div>
 
@@ -238,7 +237,7 @@ const Experience = () => {
                           className="text-white/25"
                         />
 
-                        <span className="text-[10px] font-medium uppercase tracking-[0.12em] text-white/35">
+                        <span className="text-[12px] font-medium uppercase tracking-[0.12em] text-white/35">
                           {experience.period}
                         </span>
                       </div>
@@ -248,7 +247,7 @@ const Experience = () => {
                     <div className="mt-5 flex flex-wrap gap-4">
 
                       {experience.location && (
-                        <div className="flex items-center gap-2 text-[10px] text-white/25">
+                        <div className="flex items-center gap-2 text-[12px] text-white/25">
                           <MapPin
                             size={13}
                             className="text-white/20"
@@ -258,7 +257,7 @@ const Experience = () => {
                         </div>
                       )}
 
-                      <div className="flex items-center gap-2 text-[10px] text-white/25">
+                      <div className="flex items-center gap-2 text-[12px] text-white/25">
                         <Sparkles
                           size={13}
                           style={{ color: "rgba(1,193,106,0.55)" }}
@@ -334,7 +333,7 @@ const Experience = () => {
                               href={credential.url}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-2 rounded-lg border border-white/[0.07] bg-white/[0.02] px-3 py-2 text-[10px] font-medium text-white/45 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#01c16a]/30 hover:bg-[#01c16a]/[0.05] hover:text-[#5ee6a2]"
+                              className="inline-flex items-center gap-2 rounded-lg border border-white/[0.07] bg-white/[0.02] px-3 py-2 text-[12px] font-medium text-white/45 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#01c16a]/30 hover:bg-[#01c16a]/[0.05] hover:text-[#5ee6a2]"
                             >
                               {credential.label}
                               <ExternalLink size={12} />
@@ -388,12 +387,12 @@ const Experience = () => {
             />
           </div>
 
-          <p className="max-w-xl text-sm leading-7 text-white/30">
+          {/* <p className="max-w-xl text-sm leading-7 text-white/30">
             Every role has been another opportunity to learn, build,
             solve difficult problems, and become a better engineer.
-          </p>
+          </p> */}
 
-          <div className="mt-5 flex items-center gap-2">
+          {/* <div className="mt-5 flex items-center gap-2">
             <span className="h-px w-8 bg-white/[0.08]" />
 
             <span
@@ -405,7 +404,7 @@ const Experience = () => {
             />
 
             <span className="h-px w-8 bg-white/[0.08]" />
-          </div>
+          </div> */}
         </motion.div>
 
       </div>

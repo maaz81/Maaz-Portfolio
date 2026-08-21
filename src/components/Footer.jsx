@@ -210,7 +210,7 @@ export default function Footer() {
             <p
               className="
                 max-w-lg
-                text-sm
+                text-md
                 leading-7
                 text-slate-400
               "

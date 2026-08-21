@@ -638,7 +638,7 @@ export default function Contact() {
                       text-white/25
                     "
                   >
-                    Find me online
+                    Socials
                   </span>
 
                   <span className="h-px w-8 bg-white/[0.07]" />
@@ -694,79 +694,6 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* Availability */}
-
-              <div
-                className="
-                  mt-8
-                  rounded-2xl
-                  border
-                  border-[#01c16a]/15
-                  bg-[#01c16a]/[0.035]
-                  p-4
-                "
-              >
-                <div className="flex items-center gap-3">
-
-                  <span className="relative flex h-2.5 w-2.5">
-                    <span
-                      className="
-                        absolute
-                        inline-flex
-                        h-full
-                        w-full
-                        animate-ping
-                        rounded-full
-                        bg-[#01c16a]
-                        opacity-40
-                      "
-                    />
-
-                    <span
-                      className="
-                        relative
-                        inline-flex
-                        h-2.5
-                        w-2.5
-                        rounded-full
-                        bg-[#01c16a]
-                        shadow-[0_0_12px_rgba(1,193,106,0.7)]
-                      "
-                    />
-                  </span>
-
-                  <div>
-                    <p className="text-xs font-semibold text-white/75">
-                      Available for opportunities
-                    </p>
-
-                    <p className="mt-1 text-[10px] leading-4 text-white/30">
-                      Open to backend, SDE and full-stack
-                      opportunities.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Response time */}
-
-              <div
-                className="
-                  mt-3
-                  flex
-                  items-center
-                  gap-2
-                  px-1
-                  text-[9px]
-                  text-white/20
-                "
-              >
-                <Clock3 size={11} />
-
-                <span>
-                  Usually responds within 24–48 hours
-                </span>
-              </div>
             </div>
           </motion.div>
 

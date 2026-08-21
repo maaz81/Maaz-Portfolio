@@ -328,7 +328,7 @@ const Skills = () => {
                           index * 0.08 +
                           skillIndex * 0.035,
                       }}
-                      className="rounded-lg border border-white/[0.06] bg-white/[0.025] px-2.5 py-1.5 text-[10px] font-medium text-white/45 transition-all duration-300 hover:border-[#01c16a]/20 hover:bg-[#01c16a]/[0.07] hover:text-[#8df0bb]"
+                      className="rounded-lg border border-white/[0.06] bg-white/[0.025] px-2.5 py-1.5 text-[14px] font-medium text-white/45 transition-all duration-300 hover:border-[#01c16a]/20 hover:bg-[#01c16a]/[0.07] hover:text-[#8df0bb]"
                     >
                       {skill}
                     </motion.span>
@@ -351,80 +351,6 @@ const Skills = () => {
             );
           })}
         </div>
-
-        {/* =====================================================
-            BACKEND FOCUS
-        ===================================================== */}
-
-        <motion.div
-          {...reveal(0.35)}
-          className="relative mt-8 overflow-hidden rounded-[2rem] border border-white/[0.07] bg-gradient-to-r from-[#01c16a]/[0.055] via-transparent to-[#01c16a]/[0.025] p-6 backdrop-blur-xl sm:p-7"
-        >
-          {/* Decorative glow */}
-          <div
-            className="pointer-events-none absolute right-[-5%] top-[-100%] h-[300px] w-[300px] rounded-full blur-[100px]"
-            style={{
-              background: "rgba(1,193,106,0.08)",
-            }}
-          />
-
-          <div className="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-            {/* Left */}
-            <div className="max-w-2xl">
-              <div className="mb-3 flex items-center gap-2">
-                <span
-                  className="h-1.5 w-1.5 rounded-full"
-                  style={{
-                    backgroundColor: GREEN,
-                    boxShadow: `0 0 10px ${GREEN}`,
-                  }}
-                />
-
-                <span
-                  className="text-[9px] font-bold uppercase tracking-[0.25em]"
-                  style={{ color: "#5ee6a2" }}
-                >
-                  Primary Focus
-                </span>
-              </div>
-
-              <h3 className="text-xl font-semibold tracking-[-0.025em] text-white/85 sm:text-2xl">
-                Backend Engineering
-              </h3>
-
-              <p className="mt-2 text-sm leading-6 text-white/35">
-                Designing APIs, authentication systems, database
-                workflows, caching strategies, and reliable backend
-                architectures.
-              </p>
-            </div>
-
-            {/* Right */}
-            <div className="flex flex-wrap gap-2">
-              {[
-                "Node.js",
-                "Express",
-                "PostgreSQL",
-                "Redis",
-                "JWT",
-                "RBAC",
-                "REST APIs",
-              ].map((skill) => (
-                <span
-                  key={skill}
-                  className="rounded-full border px-3 py-1.5 text-[10px] font-medium"
-                  style={{
-                    borderColor: "rgba(1,193,106,0.14)",
-                    background: "rgba(1,193,106,0.05)",
-                    color: "rgba(141,240,187,0.65)",
-                  }}
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
-        </motion.div>
 
         {/* =====================================================
             BOTTOM STATEMENT

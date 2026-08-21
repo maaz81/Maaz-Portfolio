@@ -481,51 +481,6 @@ const About = () => {
             </motion.a>
           </motion.div>
         </div>
-
-        {/* =====================================================
-            BOTTOM IDENTITY STRIP
-        ===================================================== */}
-
-        <motion.div
-          {...reveal("up", 0.35)}
-          className="mt-16 flex flex-col items-center justify-between gap-5 rounded-2xl border border-white/[0.06] bg-white/[0.018] px-6 py-5 backdrop-blur-xl sm:flex-row"
-        >
-          <div className="flex items-center gap-3">
-            <div
-              className="flex h-9 w-9 items-center justify-center rounded-xl border"
-              style={{
-                borderColor: "rgba(1,193,106,0.14)",
-                background: "rgba(1,193,106,0.05)",
-              }}
-            >
-              <BriefcaseBusiness
-                size={15}
-                style={{ color: GREEN }}
-              />
-            </div>
-
-            <div>
-              <p className="text-xs font-semibold text-white/65">
-                Backend-focused Full Stack Developer
-              </p>
-
-              <p className="mt-0.5 text-[10px] text-white/25">
-                Building reliable systems, one API at a time.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-white/25">
-            <span
-              className="h-1.5 w-1.5 rounded-full"
-              style={{
-                backgroundColor: GREEN,
-                boxShadow: `0 0 8px ${GREEN}`,
-              }}
-            />
-            Open to opportunities
-          </div>
-        </motion.div>
       </div>
 
       {/* Bottom fade */}

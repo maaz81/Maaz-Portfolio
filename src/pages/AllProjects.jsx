@@ -241,7 +241,7 @@ export default function AllProjectsPage() {
               "
             >
               A collection of production-ready applications,
-              experiments, and technical explorations built
+              and technical explorations built
               with modern web technologies.
             </p>
 

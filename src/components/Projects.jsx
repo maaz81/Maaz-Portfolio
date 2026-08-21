@@ -196,7 +196,7 @@ export default function Projects() {
           </h2>
 
           {/* Description */}
-
+          {/* 
           <p
             className="
               mx-auto
@@ -210,7 +210,7 @@ export default function Projects() {
           >
             A selection of projects where ideas become thoughtful,
             scalable, and production-ready digital experiences.
-          </p>
+          </p> */}
 
           {/* Decorative accent */}
 
